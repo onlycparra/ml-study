@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-07-16 Sun 22:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Machine Learning &#x2013; Week 1</title>
+<meta name="author" content="Claudio Parra" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Machine Learning &#x2013; Week 1</h1>
+<p>
+<a href="week1_notes.html">.</a> <a href="week2_notes.html">Week 2</a>
+</p>
+
+<div id="outline-container-org633bf46" class="outline-2">
+<h2 id="org633bf46"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Supervised: you give the right answer to the machine, so it can learn from it.
+<ul class="org-ul">
+<li>Regression: reconstruct a continuous function.</li>
+<li>Classification: given a set of labels, apply one (or more?) labels to each input.</li>
+</ul></li>
+<li>Unsupervised: the machine is asked to find structure within the given data.</li>
+</ul>
+</div>
+<div id="outline-container-org68fda3d" class="outline-3">
+<h3 id="org68fda3d"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> classification seems to be a discretization of regression.
+<ul class="org-ul">
+<li><b>ANS</b> Not quite. It seems that there is no ordering relation between the labels.</li>
+</ul></li>
+<li class="trans"><code>[-]</code> Is there unsupervised learning that is not &ldquo;searching for labels&rdquo;.
+<ul class="org-ul">
+<li><b>ANS</b> It looks like</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org197f97f" class="outline-2">
+<h2 id="org197f97f"><span class="section-number-2">2.</span> Model and Cost Function</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org94b1c4b" class="outline-3">
+<h3 id="org94b1c4b"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><b>Dataset</b>: set of data points.</li>
+<li><b>Training set</b>: dataset used to train the network.</li>
+<li><b>i-th Data Point</b>: the pair \(x^{(i)},y^{(i)}\). When we are in a learning scenario, this is a <b>training example</b>
+<ul class="org-ul">
+<li><b>Features</b> of the \(i^{\text{th}}\) data point: \(x^{(i)}\), input variable or array of input variables.</li>
+<li><b>Target</b> of the \(i^{\text{th}}\) data point: \(y^{(i)}\), output variable.</li>
+<li><b>Hypothesis</b>: function (conventionally denoted by \(h\)) that the ML algorithm proposes to be the correct mapping from features to target.</li>
+</ul></li>
+<li>\(X\): space of input variables.</li>
+<li>\(Y\): space of output variables.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3746e4e" class="outline-3">
+<h3 id="org3746e4e"><span class="section-number-3">2.2.</span> Model representation</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The function \(h\) has the following shape:
+</p>
+
+\begin{equation}
+\begin{split}
+h_{\Theta}(x) &= \Theta_0 + \Theta_1x_1 + \Theta_2x_2 \cdots \Theta_{n-1}x_{n-1}\\
+              &= [\Theta] \cdot [1|x]
+\end{split}
+\end{equation}
+
+<p>
+Where \(x_j\) is the j-th feature of a given data point. The idea is that for a new, unseen \(x'\), \(h_{\Theta}(x') \approx f(x')\) where \(f\) is the actual underlying function producing the dataset.
+</p>
+
+
+<div id="org348adf5" class="figure">
+<p><img src="figs/ml-diagram.png" alt="ml-diagram.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45596fc" class="outline-3">
+<h3 id="org45596fc"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>By convension denoted by \(J\).</li>
+<li>Its parameters are \(\Theta_i\).</li>
+<li>By minimizing \(J\), we are finding parameters \(\Theta_i\) such that \(h_{\Theta}(x^{(i)})\) is close to \(y^{(i)}\).
+\[J(\Theta_0,\Theta_1,\cdots) = \frac{1}{2m}\Sigma^{m}_{i=1}\big(h_{\Theta}(x^{(i)})-y^{(i)}\big)^2\]
+Where \(m\) is the number of training examples in the training set.</li>
+<li>Called <b>Squared error function</b> or <b>error function</b> or <b>mean square error</b>: pretty common for regression problems.</li>
+<li><b>Do not confuse</b> \(h_\Theta(x)\) (the predictor), with \(J(\Theta)\) (the &ldquo;how good the predictor is&rdquo;)</li>
+</ul>
+</div>
+<div id="outline-container-orgc99d33d" class="outline-4">
+<h4 id="orgc99d33d"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> I get the \(\frac{1}{m}\) part of the cost function: we want an average <i>squared-difference</i> but why are we didiving by \(2\)? Wouldn&rsquo;t it make more sense to compute the square root?
+<ul class="org-ul">
+<li><b>ANS</b> The mean is halved \((\frac{1}{2})\) as a convenience for the computation of the gradient descent, as the derivative term of the square function will cancel out the \((\frac{1}{2})\) term.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb75dcc5" class="outline-2">
+<h2 id="orgb75dcc5"><span class="section-number-2">3.</span> Parameter Learning</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org812a791" class="outline-3">
+<h3 id="org812a791"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>The way to update each parameter is this
+\[\Theta_j \leftarrow \Theta_j - \alpha\frac{\delta}{\delta\Theta_j}J(\Theta_0,\Theta_1,\cdots)\]
+Where \(\alpha\) is the <i>learning rate</i>. and the expression at the right of \(\alpha\) is the partial derivative of \(J\) with respect to \(\Theta_j\).</li>
+<li>Perform a simultaneous update of all the \(Theta_j\) using the same \(J()\) function in each iteration.</li>
+<li>The smaller \(\alpha\) is, the slower the convergence (smaller steps towards the minimum of \(J\)). The greater \(\alpha\) is, the faster we approach to it. Note that too big may overshoot.</li>
+<li>It is still possible to learn with a fixed \(\alpha\). As \(J\) approaches to its minimum, its derivative approaches to zero. This means that each update to \(\Theta\) gets smaller and smaller. This is good, coz as we get closer to the minimum, we want to be more cautious with the steps, so we don&rsquo;t overshoot.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ec7881" class="outline-2">
+<h2 id="org7ec7881"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><b>Matrix</b>: rows \(\times\) cols. Usually in uppercase.</li>
+<li><b>Vector</b>: a single column. Usually in lowercase.</li>
+</ul>
+</div>
+<div id="outline-container-org079a8ec" class="outline-3">
+<h3 id="org079a8ec"><span class="section-number-3">4.1.</span> Dimensions</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">The ; inside of the matrix denotes we are</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">going back to a new row.</span>
+A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">6</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">8</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">9</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">10</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">11</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">12</span>]
+[rows<span style="color: #d33682; font-style: italic;">,</span>cols] <span style="color: #d33682; font-style: italic;">=</span> size(A)<span style="color: #d33682; font-style: italic;">;</span>
+rows<span style="color: #d33682; font-style: italic;">,</span>cols
+A_23 <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">3</span>)
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize a vector</span>
+v <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span><span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span><span style="color: #6c71c4; font-weight: bold;">3</span>]
+[rows<span style="color: #d33682; font-style: italic;">,</span>cols] <span style="color: #d33682; font-style: italic;">=</span> size(v)
+rows<span style="color: #d33682; font-style: italic;">,</span>cols
+v_3  <span style="color: #d33682; font-style: italic;">=</span> v(<span style="color: #6c71c4; font-weight: bold;">3</span>)
+</pre>
+</div>
+
+<pre class="example" id="org5b5e273">
+A =
+
+    1    2    3
+    4    5    6
+    7    8    9
+   10   11   12
+rows = 4
+cols = 3
+A_23 = 6
+v =
+
+   1
+   2
+   3
+rows = 3
+cols = 1
+rows = 3
+cols = 1
+v_3 = 3
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orga6ca537" class="outline-3">
+<h3 id="orga6ca537"><span class="section-number-3">4.2.</span> Scalar Operations</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize matrix A and B, and scalar s</span>
+A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">2</span>]
+B <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">1</span>]
+s <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">2</span>
+add_AB <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">+</span> B
+sub_AB <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">-</span> B
+mult_As <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">*</span> s
+div_As <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">/</span> s
+add_As <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">+</span> s
+</pre>
+</div>
+
+<pre class="example" id="org520a7e5">
+A =
+
+   1   2   4
+   5   3   2
+B =
+
+   1   3   4
+   1   1   1
+s = 2
+add_AB =
+
+   2   5   8
+   6   4   3
+sub_AB =
+
+   0  -1   0
+   4   2   1
+mult_As =
+
+    2    4    8
+   10    6    4
+div_As =
+
+   0.5000   1.0000   2.0000
+   2.5000   1.5000   1.0000
+add_As =
+
+   3   4   6
+   7   5   4
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga3b9d6b" class="outline-3">
+<h3 id="orga3b9d6b"><span class="section-number-3">4.3.</span> Matrix Vector Multiplitation</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li><p>
+I find it easier to see the operation if I dispose the operands using this layout:
+</p>
+<pre class="example" id="orge5c8e20">
+                 B=
+              |  x
+        nxn   |  y
+      square  |  z
+      --------+----
+      1  2  3 | [*]  &lt;---- 1x + 2y + 3z
+  A=  4  5  6 | [ ]
+      7  8  9 | [ ]
+      A  B  C | [ ]
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-octave">  <span style="color: #96A7A9; font-style: italic;">% Initialize matrix A and vector v</span>
+  A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">6</span><span style="color: #d33682; font-style: italic;">;</span><span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">8</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">9</span>]
+  v <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">1</span>]
+  Av <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">*</span> v
+</pre>
+</div>
+
+<pre class="example" id="orgf970872">
+  A =
+
+     1   2   3
+     4   5   6
+     7   8   9
+  v =
+
+     1
+     2
+     1
+  Av =
+
+      8
+     20
+     32
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8f5dfa0" class="outline-3">
+<h3 id="org8f5dfa0"><span class="section-number-3">4.4.</span> Matrix Matrix Multiplication</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Not commutative \(A\times B \neq B\times A\).</li>
+<li>Associative \((A \times B) \times C = A \times (B \times C)\).</li>
+<li><p>
+Similar layout idea
+</p>
+<pre class="example" id="org8582aea">
+                    B=
+              |  r  u  x
+        nxn   |  s  v  y
+      square  |  t  w  z
+      --------+----------
+      1  2  3 | [ ][*][ ]  &lt;---- 1u + 2v + 3w
+  A=  4  5  6 | [ ][ ][ ]
+      7  8  9 | [ ][ ][ ]
+      A  B  C | [ ][ ][ ]
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge823fc5" class="outline-3">
+<h3 id="orge823fc5"><span class="section-number-3">4.5.</span> Identity</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>\(I \times A = A\times I = A\)
+<ul class="org-ul">
+<li>Note that in general those two are \(I\) with different dimensions.</li>
+</ul></li>
+<li>\(I\)&rsquo;s dimension is normally implicit. But sometimes it is denoted as \(I_{n\times n}\) or \(I_{n}\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc98ab7d" class="outline-3">
+<h3 id="orgc98ab7d"><span class="section-number-3">4.6.</span> Inverse and Transpose</h3>
+<div class="outline-text-3" id="text-4-6">
+</div>
+<div id="outline-container-orgb13e0a2" class="outline-4">
+<h4 id="orgb13e0a2"><span class="section-number-4">4.6.1.</span> Inverse</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<ul class="org-ul">
+<li><p>
+If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
+\[A \times A^{-1} = A^{-1} \times A = I\]
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">  A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">16</span>]
+  <span style="color: #96A7A9; font-style: italic;">%</span>
+  Ainv_numeric <span style="color: #d33682; font-style: italic;">=</span> pinv(A)
+  A <span style="color: #d33682; font-style: italic;">*</span> Ainv_numeric
+  <span style="color: #96A7A9; font-style: italic;">% If you pay attention, the product generates tiny rounding errors.</span>
+  <span style="color: #96A7A9; font-style: italic;">%</span>
+  Ainv_exact <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">0.4</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">0.1</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">0.05</span> <span style="color: #6c71c4; font-weight: bold;">0.075</span>]
+  A <span style="color: #d33682; font-style: italic;">*</span> Ainv_exact
+  <span style="color: #96A7A9; font-style: italic;">% This is the precise answer.</span>
+</pre>
+</div>
+
+<pre class="example" id="org853c26c">
+  A =
+
+      3    4
+      2   16
+  Ainv_numeric =
+
+     0.400000  -0.100000
+    -0.050000   0.075000
+  ans =
+
+     1.0000e+00   1.1102e-16
+    -2.2204e-16   1.0000e+00
+  Ainv_exact =
+
+     0.400000  -0.100000
+    -0.050000   0.075000
+  ans =
+
+     1.0000  -0.0000
+          0   1.0000
+</pre></li>
+
+<li>A matrix without inverse is said to be <b>Singular</b> or <b>Degenerate</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd774bd9" class="outline-4">
+<h4 id="orgd774bd9"><span class="section-number-4">4.6.2.</span> Transpose</h4>
+<div class="outline-text-4" id="text-4-6-2">
+<ul class="org-ul">
+<li>The transpose of a matrix \(A\) is denoted by \(A^{T}\).</li>
+<li><p>
+In octave, it is experssed with an apostrophe.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">  A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #6c71c4; font-weight: bold;">6</span> <span style="color: #6c71c4; font-weight: bold;">7</span> <span style="color: #6c71c4; font-weight: bold;">8</span>]
+  At <span style="color: #d33682; font-style: italic;">=</span> A<span style="color: #d33682; font-style: italic;">'</span>
+</pre>
+</div>
+
+<pre class="example" id="org8c54cee">
+  A =
+
+     1   2   3   4
+     5   6   7   8
+  At =
+
+     1   5
+     2   6
+     3   7
+     4   8
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Claudio Parra</p>
+<p class="date">Created: 2023-07-16 Sun 22:51</p>
+</div>
+</body>
+</html>

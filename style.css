@@ -1,0 +1,124 @@
+html{
+  --col-accent1: #222;
+  --col-accent2: #ccc;
+  --col-bg: #ffffff;
+  --col-accent-title-1: #fff;
+  --col-accent-title-2: #fff;
+  --col-accent-1: #0c3b3b;
+  --col-accent-2: #009f9f;
+  font-family: Sans;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #666;
+}
+.title {
+  color: var(--col-accent-title-1);
+  background: var(--col-accent1);
+}
+
+h1~p {
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+h1 ~ p > a {
+  color: #bbb;
+  background: var(--col-accent1);
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  border: solid 2px var(--col-accent1);
+  font-weight: bold;
+}
+
+h1 ~ p > a:hover {
+    box-shadow: 0 0 6px var(--col-accent-2);
+  border: solid 2px var(--col-accent-1);
+  background: var(--col-accent-1);
+  color: white
+}
+
+h1 ~ p > a:active {
+    border: solid 2px var(--col-accent-2);
+}
+
+table {
+  margin-inline: auto;
+}
+pre.example{
+  border: none;
+  border-left: solid 8px #ead788;
+  background: #fff6d1;
+  border-radius: 0;
+}
+#content{
+  margin-inline: 2vw;
+  margin: 0 auto;
+  flex-grow: 1;
+  width: min(98vw,100ch);
+}
+.outline-2 {
+  background: var(--col-bg);
+  border: solid 0px var(--col-accent1);
+  margin-top: 2rem;
+  box-shadow: 0 0 6px var(--col-accent-1);
+  border-radius: 7px 7px 6px 6px;
+}
+.outline-2>:first-child {
+  margin-top: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.outline-2>:last-child {
+  padding-bottom: 2rem;
+}
+
+.outline-3>div {
+  margin-inline: 1em;
+}
+h2, h3 {
+  background: var(--col-accent2);
+  padding-inline: 0.5rem;
+}
+h2 {
+  background: var(--col-accent1);
+  color: var(--col-accent-title-2);
+  padding-block: 0.5rem;
+}
+
+#postamble {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3rem;
+  background: #444;
+  color: white;
+  padding: 1rem;
+  flex-grow: 0;
+}
+#postamble > p {
+  font-size: smaller;
+  margin-inline: 1rem;
+}
+
+#text-footnotes {
+  background: white;
+  margin-top: 0;
+  padding-bottom: 1rem;
+  border-radius: 0 0 6px 6px;
+  padding-inline: 1rem;
+  font-size: 0.8rem;
+  box-shadow: 0 0 6px var(--col-accent-1);
+}
+h2.footnotes {
+  margin-bottom: 0;
+  font-size: 1.2em;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 0 6px var(--col-accent-1);
+}
