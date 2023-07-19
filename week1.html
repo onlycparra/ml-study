@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-16 Sun 22:51 -->
+<!-- 2023-07-18 Tue 18:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 1</title>
@@ -231,11 +231,11 @@
 <div id="content" class="content">
 <h1 class="title">Machine Learning &#x2013; Week 1</h1>
 <p>
-<a href="week1_notes.html">.</a> <a href="week2_notes.html">Week 2</a>
+<a href="week1.html">.</a> <a href="week2.html">Week 2</a>
 </p>
 
-<div id="outline-container-org633bf46" class="outline-2">
-<h2 id="org633bf46"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org109260b" class="outline-2">
+<h2 id="org109260b"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Supervised: you give the right answer to the machine, so it can learn from it.
@@ -246,8 +246,8 @@
 <li>Unsupervised: the machine is asked to find structure within the given data.</li>
 </ul>
 </div>
-<div id="outline-container-org68fda3d" class="outline-3">
-<h3 id="org68fda3d"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
+<div id="outline-container-orgf6b8b8a" class="outline-3">
+<h3 id="orgf6b8b8a"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> classification seems to be a discretization of regression.
@@ -262,12 +262,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org197f97f" class="outline-2">
-<h2 id="org197f97f"><span class="section-number-2">2.</span> Model and Cost Function</h2>
+<div id="outline-container-orgf8e5329" class="outline-2">
+<h2 id="orgf8e5329"><span class="section-number-2">2.</span> Model and Cost Function</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org94b1c4b" class="outline-3">
-<h3 id="org94b1c4b"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
+<div id="outline-container-org8751507" class="outline-3">
+<h3 id="org8751507"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><b>Dataset</b>: set of data points.</li>
@@ -283,8 +283,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org3746e4e" class="outline-3">
-<h3 id="org3746e4e"><span class="section-number-3">2.2.</span> Model representation</h3>
+<div id="outline-container-org2f622ce" class="outline-3">
+<h3 id="org2f622ce"><span class="section-number-3">2.2.</span> Model representation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The function \(h\) has the following shape:
@@ -302,15 +302,15 @@ Where \(x_j\) is the j-th feature of a given data point. The idea is that for a 
 </p>
 
 
-<div id="org348adf5" class="figure">
+<div id="org680b027" class="figure">
 <p><img src="figs/ml-diagram.png" alt="ml-diagram.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org45596fc" class="outline-3">
-<h3 id="org45596fc"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
+<div id="outline-container-orgd33b80a" class="outline-3">
+<h3 id="orgd33b80a"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>By convension denoted by \(J\).</li>
@@ -322,8 +322,8 @@ Where \(m\) is the number of training examples in the training set.</li>
 <li><b>Do not confuse</b> \(h_\Theta(x)\) (the predictor), with \(J(\Theta)\) (the &ldquo;how good the predictor is&rdquo;)</li>
 </ul>
 </div>
-<div id="outline-container-orgc99d33d" class="outline-4">
-<h4 id="orgc99d33d"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
+<div id="outline-container-org8c2505f" class="outline-4">
+<h4 id="org8c2505f"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> I get the \(\frac{1}{m}\) part of the cost function: we want an average <i>squared-difference</i> but why are we didiving by \(2\)? Wouldn&rsquo;t it make more sense to compute the square root?
@@ -336,12 +336,12 @@ Where \(m\) is the number of training examples in the training set.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb75dcc5" class="outline-2">
-<h2 id="orgb75dcc5"><span class="section-number-2">3.</span> Parameter Learning</h2>
+<div id="outline-container-org34074ce" class="outline-2">
+<h2 id="org34074ce"><span class="section-number-2">3.</span> Parameter Learning</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org812a791" class="outline-3">
-<h3 id="org812a791"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
+<div id="outline-container-orgfffea96" class="outline-3">
+<h3 id="orgfffea96"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>The way to update each parameter is this
@@ -354,16 +354,16 @@ Where \(\alpha\) is the <i>learning rate</i>. and the expression at the right of
 </div>
 </div>
 </div>
-<div id="outline-container-org7ec7881" class="outline-2">
-<h2 id="org7ec7881"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
+<div id="outline-container-orgdf9962d" class="outline-2">
+<h2 id="orgdf9962d"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b>Matrix</b>: rows \(\times\) cols. Usually in uppercase.</li>
 <li><b>Vector</b>: a single column. Usually in lowercase.</li>
 </ul>
 </div>
-<div id="outline-container-org079a8ec" class="outline-3">
-<h3 id="org079a8ec"><span class="section-number-3">4.1.</span> Dimensions</h3>
+<div id="outline-container-org78116b8" class="outline-3">
+<h3 id="org78116b8"><span class="section-number-3">4.1.</span> Dimensions</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">The ; inside of the matrix denotes we are</span>
@@ -381,7 +381,7 @@ v_3  <span style="color: #d33682; font-style: italic;">=</span> v(<span style="c
 </pre>
 </div>
 
-<pre class="example" id="org5b5e273">
+<pre class="example" id="orgc3fbf77">
 A =
 
     1    2    3
@@ -406,8 +406,8 @@ v_3 = 3
 </div>
 
 
-<div id="outline-container-orga6ca537" class="outline-3">
-<h3 id="orga6ca537"><span class="section-number-3">4.2.</span> Scalar Operations</h3>
+<div id="outline-container-org755391b" class="outline-3">
+<h3 id="org755391b"><span class="section-number-3">4.2.</span> Scalar Operations</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize matrix A and B, and scalar s</span>
@@ -422,7 +422,7 @@ add_As <span style="color: #d33682; font-style: italic;">=</span> A <span style=
 </pre>
 </div>
 
-<pre class="example" id="org520a7e5">
+<pre class="example" id="orgd6a5e43">
 A =
 
    1   2   4
@@ -456,14 +456,14 @@ add_As =
 </div>
 </div>
 
-<div id="outline-container-orga3b9d6b" class="outline-3">
-<h3 id="orga3b9d6b"><span class="section-number-3">4.3.</span> Matrix Vector Multiplitation</h3>
+<div id="outline-container-orgc3385e2" class="outline-3">
+<h3 id="orgc3385e2"><span class="section-number-3">4.3.</span> Matrix Vector Multiplitation</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li><p>
 I find it easier to see the operation if I dispose the operands using this layout:
 </p>
-<pre class="example" id="orge5c8e20">
+<pre class="example" id="org337a4b6">
                  B=
               |  x
         nxn   |  y
@@ -483,7 +483,7 @@ I find it easier to see the operation if I dispose the operands using this layou
 </pre>
 </div>
 
-<pre class="example" id="orgf970872">
+<pre class="example" id="org607f194">
   A =
 
      1   2   3
@@ -503,8 +503,8 @@ I find it easier to see the operation if I dispose the operands using this layou
 </ul>
 </div>
 </div>
-<div id="outline-container-org8f5dfa0" class="outline-3">
-<h3 id="org8f5dfa0"><span class="section-number-3">4.4.</span> Matrix Matrix Multiplication</h3>
+<div id="outline-container-org882b281" class="outline-3">
+<h3 id="org882b281"><span class="section-number-3">4.4.</span> Matrix Matrix Multiplication</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li>Not commutative \(A\times B \neq B\times A\).</li>
@@ -512,7 +512,7 @@ I find it easier to see the operation if I dispose the operands using this layou
 <li><p>
 Similar layout idea
 </p>
-<pre class="example" id="org8582aea">
+<pre class="example" id="orgbf254d0">
                     B=
               |  r  u  x
         nxn   |  s  v  y
@@ -526,8 +526,8 @@ Similar layout idea
 </ul>
 </div>
 </div>
-<div id="outline-container-orge823fc5" class="outline-3">
-<h3 id="orge823fc5"><span class="section-number-3">4.5.</span> Identity</h3>
+<div id="outline-container-org20252dd" class="outline-3">
+<h3 id="org20252dd"><span class="section-number-3">4.5.</span> Identity</h3>
 <div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
 <li>\(I \times A = A\times I = A\)
@@ -538,12 +538,12 @@ Similar layout idea
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc98ab7d" class="outline-3">
-<h3 id="orgc98ab7d"><span class="section-number-3">4.6.</span> Inverse and Transpose</h3>
+<div id="outline-container-org0c65574" class="outline-3">
+<h3 id="org0c65574"><span class="section-number-3">4.6.</span> Inverse and Transpose</h3>
 <div class="outline-text-3" id="text-4-6">
 </div>
-<div id="outline-container-orgb13e0a2" class="outline-4">
-<h4 id="orgb13e0a2"><span class="section-number-4">4.6.1.</span> Inverse</h4>
+<div id="outline-container-org23db868" class="outline-4">
+<h4 id="org23db868"><span class="section-number-4">4.6.1.</span> Inverse</h4>
 <div class="outline-text-4" id="text-4-6-1">
 <ul class="org-ul">
 <li><p>
@@ -561,37 +561,14 @@ If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
   A <span style="color: #d33682; font-style: italic;">*</span> Ainv_exact
   <span style="color: #96A7A9; font-style: italic;">% This is the precise answer.</span>
 </pre>
-</div>
-
-<pre class="example" id="org853c26c">
-  A =
-
-      3    4
-      2   16
-  Ainv_numeric =
-
-     0.400000  -0.100000
-    -0.050000   0.075000
-  ans =
-
-     1.0000e+00   1.1102e-16
-    -2.2204e-16   1.0000e+00
-  Ainv_exact =
-
-     0.400000  -0.100000
-    -0.050000   0.075000
-  ans =
-
-     1.0000  -0.0000
-          0   1.0000
-</pre></li>
+</div></li>
 
 <li>A matrix without inverse is said to be <b>Singular</b> or <b>Degenerate</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd774bd9" class="outline-4">
-<h4 id="orgd774bd9"><span class="section-number-4">4.6.2.</span> Transpose</h4>
+<div id="outline-container-org0924465" class="outline-4">
+<h4 id="org0924465"><span class="section-number-4">4.6.2.</span> Transpose</h4>
 <div class="outline-text-4" id="text-4-6-2">
 <ul class="org-ul">
 <li>The transpose of a matrix \(A\) is denoted by \(A^{T}\).</li>
@@ -604,7 +581,7 @@ In octave, it is experssed with an apostrophe.
 </pre>
 </div>
 
-<pre class="example" id="org8c54cee">
+<pre class="example" id="org469a009">
   A =
 
      1   2   3   4
@@ -624,7 +601,7 @@ In octave, it is experssed with an apostrophe.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-16 Sun 22:51</p>
+<p class="date">Created: 2023-07-18 Tue 18:47</p>
 </div>
 </body>
 </html>

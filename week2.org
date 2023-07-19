@@ -6,7 +6,7 @@
 #+OPTIONS: toc:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-[[file:week1_notes.org][Week 1]] [[file:week3_notes.org][Week 3]]
+[[file:week1.org][Week 1]] [[file:week3.org][Week 3]]
 
 * Multivariate Linear Regression
 ** Notation for Multiple Features
@@ -108,16 +108,183 @@
   #+attr_html: :width 600px
   [[file:figs/learning_rate_diff_alpha.png]]
 ** Features and Polynomial Regression
-- Sometimes we may want to move away from the shape \(\Theta_ix_i + \Theta_{i+1}x_{i+1} + \cdots\). In other words, from a linear function.
-- We may want to create new variables as functions of the original features. For example, in house selling, for features:
-  - frontage
-  - depth
-  I may create a new feature
-  - area = frontage \(\times\) depth
-  And now my hypothesis may be in function of the area, rather than the original variables.
+- Our hypothesis need not be linear (as shown below).
+  \[h_{\Theta}(x) =
+  \Theta_0 +
+  \Theta_1x_1 +
+  \Theta_2x_2 +
+  \Theta_3x_3 + \cdots\]
+- Sometimes we may think a quadratic or cubic hypothesis fits better the data.
+  \[h_{\Theta}(x) =
+  \Theta_0 +
+  \Theta_1\textcolor{red}{x} +
+  \Theta_2\textcolor{red}{x^2} +
+  \Theta_3\textcolor{red}{x^3} + \cdots\]
+- If we have only one original feature \(x_1\), we can create artificial features and then the rest of the algorithm is the same.
+  \[x_2 = x^2_1;\quad x_2 = x^3_1\]
+- Or compose new features based on serveral originals. For example, if in a database of houses we have:
+  - frontage length.
+  - depth lenhth.
+  We may create a new feature *area* \(=\) frontage \(\times\) depth. And now my hypothesis may be in function of the area, rather than linear lengths.
 
 * Computing Parameters Automatically
-* Programming Assignment
+:PROPERTIES:
+:header-args: :session comp_parms_auto :exports both :results output
+:END:
+** Normal Equation
+- Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).
+- For example, take this dataset
+  #+attr_html: :width 600px
+  [[file:figs/normal_fun_1.png]]
+- Then by computing \(\Theta = (X^TX)^{-1}X^Ty\), we get the best \(\Theta\).
+  #+begin_src octave
+  X = [ 1 2104 5 1 45;
+        1 1416 3 2 40;
+        1 1534 3 2 30;
+        1  852 2 1 36];
+  y = [460;
+       232;
+       315;
+       178];
+  theta = pinv(X'*X)*X'*y
+  %
+  % test it
+  x_1 = [1 2104 5 1 45];
+  x_1 * theta
+  #+end_src
 
+  #+RESULTS:
+  : theta =
+  :
+  :    188.4003
+  :      0.3866
+  :    -56.1382
+  :    -92.9673
+  :     -3.7378
+  : ans = 460.00
+
+** Gradient Descent vs Normal Equation
+| Gradient Descent                                                                      | Normal Equation                                                                                     |
+|---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
+| Need to choose \(\alpha\)                                                             | No \(\alpha\) to choose                                                                             |
+| Iterative approach \(O(kn^2)\)                                                        | No iteration needed. This is an analytical approach \(O(n^3)\)                                      |
+| Works well even for huge number of n=features                                         | Need to compute the inverse of a \(n\times n\) matrix. Therefore, slow for large number of features |
+
+ At \(n > 1,000,000\) it is probably the only option in a reasonably modern computer.
+** Non-invertible matrix
+- Some matrices are not invertible
+  - Redundant features: reduce features, or use 'regularization' (seen later).
+  - \(m < n\): more features than training points.
+- Ocave's ~pinv()~ is *pseudo-inverse*, which does "the right thing" even if the matrix has no inverse (???)
+* Programming Assignment
+:PROPERTIES:
+:header-args: :session prog_assignment :exports both :results output
+:END:
+
+** Octave Tutorial
+#+begin_src octave
+% not equal is ~=
+1 ~= 2
+%
+% and and or are like in C. but xor is a function
+1 && 3 || xor(7,0)
+%
+% vector/matrix assignments use spaces for elements in the
+% same row, and semicolons for going to the next row
+A=[1 2;
+   3 4]
+B=[100;
+   200
+   300]
+C=[10 20 30; 40 50 60]
+%
+% finishing the line with semicolon doesn't show it in the output.
+a = 32
+b = 43;
+%
+% show stuff on screen
+disp(a)
+%
+% auto fill a vector start:step:end (inclusive)
+D = 5:2:13
+%
+% transpose is the apostrophe
+E = (0:0.2:1)'
+%
+% Useful matrices
+F = ones(2,3)
+G = zeros(2,2)
+Hu = rand(1,4) % uniform distribution in [0,1]
+Hn = randn(1,4) % normal distribution with mu=0 std=1
+I = eye(3)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+ans = 1
+ans = 1
+A =
+
+   1   2
+   3   4
+B =
+
+   100
+   200
+   300
+C =
+
+   10   20   30
+   40   50   60
+a = 32
+32
+D =
+
+    5    7    9   11   13
+E =
+
+        0
+   0.2000
+   0.4000
+   0.6000
+   0.8000
+   1.0000
+F =
+
+   1   1   1
+   1   1   1
+G =
+
+   0   0
+   0   0
+Hu =
+
+   0.603433   0.404621   0.016212   0.812026
+Hn =
+
+   0.1804   0.3696   0.1758   0.3108
+I =
+
+Diagonal Matrix
+
+   1   0   0
+   0   1   0
+   0   0   1
+#+end_example
+
+
+#+begin_src octave :results none
+% random variable with mean=-10, and variance=10
+X = -10 + sqrt(10)*randn(1,10000);
+% plot its histogram with 50 bins
+hist(X, 50);
+% set
+%set (gca, 'looseinset', [0 0 0 0]);
+set(gcf, 'Units', 'pixels', 'Position', [0 0 800 380], 'Visible', 'off')
+print('figs/normal_plot.png', '-dpng', '-r300');
+#+end_src
+
+#+attr_html: :width 700px
+[[file:figs/normal_plot.png]]
 
 [fn:1] \(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).

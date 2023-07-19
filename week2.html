@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-07-19 Wed 00:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Machine Learning &#x2013; Week 2</title>
+<meta name="author" content="Claudio Parra" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Machine Learning &#x2013; Week 2</h1>
+<p>
+<a href="week1.html">Week 1</a> <a href="week3.html">Week 3</a>
+</p>
+
+<div id="outline-container-orgf287533" class="outline-2">
+<h2 id="orgf287533"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgeed4bb3" class="outline-3">
+<h3 id="orgeed4bb3"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><p>
+The set of training examples to be used is usually in the shape of a table where there are many <b>feature</b> columns and one <b>target</b> column (the price of apartments, in this example).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">size</th>
+<th scope="col" class="org-right">bedrooms</th>
+<th scope="col" class="org-right">age</th>
+<th scope="col" class="org-right">price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1200</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">9600</td>
+</tr>
+
+<tr>
+<td class="org-right">1500</td>
+<td class="org-right">4</td>
+<td class="org-right">3</td>
+<td class="org-right">12000</td>
+</tr>
+
+<tr>
+<td class="org-right">960</td>
+<td class="org-right">8</td>
+<td class="org-right">2</td>
+<td class="org-right">8000</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Each training example in the table (each row) is said to be a <b>data point</b> \(d\). The \(i\)-th datapoint is denoted by \(d^{(i)}\). The array of features \(x\) are used by our <b>hypothesis</b> \(h_{\Theta}(x)\) to predict the target \(y\).
+</p>
+
+<p>
+\[\text{\(i\)-th row data point}\rightarrow
+  \quad
+  d^{(i)}=\begin{bmatrix}
+  x^{(i)} \\
+  y^{(i)} \\
+  \end{bmatrix}
+  \quad
+  \begin{split}
+  &\leftarrow \text{features of \(i\)-th row} \\
+  &\leftarrow \text{target of \(i\)-th row} \\
+  \end{split}\]
+</p>
+
+<p>
+then, the whole dataset \(D\) can be represented as an array of datapoints:
+</p>
+
+<p>
+\[D = \begin{bmatrix}
+  d^{(1)}, d^{(2)}, d^{(2)}, d^{(3)}, \dots
+  \end{bmatrix}\]
+</p></li>
+
+<li><b>Extended list of features</b> of \(d^{(i)}\): For convenience, it is added an extra 1 at the beginning of the vector \(x\) so in the hypothesis function we have \(n\) parameters and \(n\) features.
+This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
+\[x^{(i)} =
+  \begin{bmatrix}
+  x^{(i)}_0 = 1 \\
+  x^{(i)}_1 \\
+  x^{(i)}_2 \\
+  x^{(i)}_3 \\
+  x^{(i)}_4 \\
+  \end{bmatrix}\]</li>
+
+<li>Then, the hypothesis ends up just being the multiplication of the transposed vector of parameters \(\Theta^T\),  with the extended vector of features \(x\). (Remember that \(x_0=1\).)
+\[\begin{split}
+  h_{\Theta}(x) &\xrightarrow{\text{predicts}} y \\
+  h_{\Theta}(x) &= \Theta_0x_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + \cdots \\
+  h_{\Theta}(x) &= \begin{bmatrix}\Theta_0, \Theta_1, \Theta_2 \cdots\end{bmatrix} \times
+                   \begin{bmatrix}x_0\\ x_1\\ x_2\\ \cdots\end{bmatrix} \\
+  h_{\Theta}(x) &= \Theta^T \times x \\
+  \end{split}\]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5b44574" class="outline-3">
+<h3 id="org5b44574"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>The idea is the same as with less variables. Given that the Cost function is \(\Theta^{T}x^{(i)}\), where \(x^{(i)}\) is the \(i\)-th training example, and \(x^{(i)}_{0} = 1\), to match \(\Theta_0\), then all the derivatives to update all the \(\Theta_{j}\) are easy to compute:
+\[\begin{split}
+  \Theta^{\text{new}}_j := \Theta^{\text{old}}_j -
+  \textcolor{red}{\alpha}
+  \textcolor{green}{\frac{\delta}{\delta\Theta_j} J(\Theta)}&\\
+  %%
+  \textcolor{green}{\frac{\delta}{\delta\Theta_j} J(\Theta)}& =
+  \frac{1}{m}\sum^{m}_{i=1}\left(
+  \big(
+  h_{\Theta}(x^{(i)})-y^{(i)}
+  \big)
+  x^{(i)}_{j}\right)\\
+  \end{split}\]
+<ul class="org-ul">
+<li>Green: Partial derivative of \(J\) with respect to \(\Theta_j\)</li>
+<li>Red: Learning rate</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53ff3da" class="outline-3">
+<h3 id="org53ff3da"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org748af54" class="outline-4">
+<h4 id="org748af54"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li>Make sure the values of different features take values that range in similar values, this makes GD converge quickly. (this makes me thing on the disproportioned representation of skin surface in the brain, hands and face are huge, legs and backs are tiny.)</li>
+<li>Different people have different takes in what is a sensible range, but the take-away is &ldquo;make sure they are in a kinda similar range&rdquo;.</li>
+<li>This can be acheived by dividing every instance of a feature \(x_j\) by the max value seen in this feature in the whole dataset. This scales all values \(x_j\)s to the range \([0-1]\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd98a18d" class="outline-4">
+<h4 id="orgd98a18d"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li>Making the values gravitate around 0, by replacing \(x_j\) with \(x_j - \mu_j\)</li>
+<li>This does not apply to \(x_0\), because it needs to be \(1\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8797514" class="outline-4">
+<h4 id="org8797514"><span class="section-number-4">1.3.3.</span> Both together</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<ul class="org-ul">
+<li>The vid. talks about the denominator being either the range of values \((\text{max}(x_j)-\text{min}(x_j))\) or std deviation. Doing this you end up with values roughly between \([-0.5,0.5]\).
+\[x^{\text{norm.}}_j := \frac{x_j - \mu_{j}}{\text{max}(x_j) - \text{min}(x_j)}\]</li>
+
+<li>This denominator was not mentioned in the videos, but I think it is pretty much the same as before, the &ldquo;max&rdquo;, by which I am scaling, is also normalized. This leads to values in the range \([-1,1]\).
+\[x^{\text{norm.}}_j := \frac{x_j - \mu_{j}}{\text{max}(x_j) \textcolor{blue}{- \mu_{j}}}\]</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org769bbdd" class="outline-3">
+<h3 id="org769bbdd"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it.</li>
+<li>Supposedly, the more iterations of learning we accumulate (X axis in the right plot) we get smaller and smaller \(J(\Theta)\), which is the discrepancy between \(h_{\Theta}(x)\) and \(y\). In other words, we should be getting closer and closer to our \(\Theta^{\star}\).</li>
+<li>Then, the point of \(\alpha\) is to determine how quickly we go in the direction of the gradient of \(J(\Theta)\). If my changes in \(\Theta\) (X axis of the left plot) are too abrupt, then, even if I go in the correct direction of the gradient (towards a valley), I can anyway overshoot (as seen by the red arrows in the left plot).</li>
+<li>The effect is that as the training cummulates more and more iterations, we don&rsquo;t necessarily approach to a smaller \(J(\Theta)\) (as seen in the right plot).</li>
+<li><p>
+A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine \(\Theta\) with each iteration, so we can see whether it converges or not.
+</p>
+
+<div id="org817cd93" class="figure">
+<p><img src="figs/learning_rate_a.png" alt="learning_rate_a.png" width="600px" />
+</p>
+</div></li>
+<li><p>
+Here an example with a smaller \(\alpha\). The steps are smaller, so it should take longer to to converge, but the chances of actually converging to our \(\Theta^{\star}\) without getting lost in the way, are better.
+</p>
+
+<div id="orgac2aeb4" class="figure">
+<p><img src="figs/learning_rate_b.png" alt="learning_rate_b.png" width="600px" />
+</p>
+</div></li>
+<li>An automatic convergence test could be &ldquo;if \(J(\Theta)\) is smaller than some \(\varepsilon\), then we say that \(J\) has converged&rdquo;. But it is often difficult to establish the actual value of such \(\varepsilon\).</li>
+
+<li><p>
+It has been demonstrated (by some ML nerds) that if \(\alpha\) is sufficiently small, then it is guaranteed that \(J(\Theta)\) <b>will decrease at every single iteration</b>. The cost of that is that the learning happens to be super slow. Here three examples that shows the feeling of what happens when we vary \(\alpha\):
+</p>
+<ul class="org-ul">
+<li>A \(\alpha=0.1\)</li>
+<li>B \(\alpha=0.01\)</li>
+<li>C \(\alpha=1\)</li>
+</ul>
+
+<div id="org92e420a" class="figure">
+<p><img src="figs/learning_rate_diff_alpha.png" alt="learning_rate_diff_alpha.png" width="600px" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org63c40fd" class="outline-3">
+<h3 id="org63c40fd"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Our hypothesis need not be linear (as shown below).
+\[h_{\Theta}(x) =
+  \Theta_0 +
+  \Theta_1x_1 +
+  \Theta_2x_2 +
+  \Theta_3x_3 + \cdots\]</li>
+<li>Sometimes we may think a quadratic or cubic hypothesis fits better the data.
+\[h_{\Theta}(x) =
+  \Theta_0 +
+  \Theta_1\textcolor{red}{x} +
+  \Theta_2\textcolor{red}{x^2} +
+  \Theta_3\textcolor{red}{x^3} + \cdots\]</li>
+<li>If we have only one original feature \(x_1\), we can create artificial features and then the rest of the algorithm is the same.
+\[x_2 = x^2_1;\quad x_2 = x^3_1\]</li>
+<li><p>
+Or compose new features based on serveral originals. For example, if in a database of houses we have:
+</p>
+<ul class="org-ul">
+<li>frontage length.</li>
+<li>depth lenhth.</li>
+</ul>
+<p>
+We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now my hypothesis may be in function of the area, rather than linear lengths.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org29cdd00" class="outline-2">
+<h2 id="org29cdd00"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org185d765" class="outline-3">
+<h3 id="org185d765"><span class="section-number-3">2.1.</span> Normal Equation</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).</li>
+<li><p>
+For example, take this dataset
+</p>
+
+<div id="org24433cb" class="figure">
+<p><img src="figs/normal_fun_1.png" alt="normal_fun_1.png" width="600px" />
+</p>
+</div></li>
+<li><p>
+Then by computing \(\Theta = (X^TX)^{-1}X^Ty\), we get the best \(\Theta\).
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">  X <span style="color: #d33682; font-style: italic;">=</span> [ <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2104</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">45</span><span style="color: #d33682; font-style: italic;">;</span>
+        <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">1416</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">40</span><span style="color: #d33682; font-style: italic;">;</span>
+        <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">1534</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">30</span><span style="color: #d33682; font-style: italic;">;</span>
+        <span style="color: #6c71c4; font-weight: bold;">1</span>  <span style="color: #6c71c4; font-weight: bold;">852</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">36</span>]<span style="color: #d33682; font-style: italic;">;</span>
+  y <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">460</span><span style="color: #d33682; font-style: italic;">;</span>
+       <span style="color: #6c71c4; font-weight: bold;">232</span><span style="color: #d33682; font-style: italic;">;</span>
+       <span style="color: #6c71c4; font-weight: bold;">315</span><span style="color: #d33682; font-style: italic;">;</span>
+       <span style="color: #6c71c4; font-weight: bold;">178</span>]<span style="color: #d33682; font-style: italic;">;</span>
+  theta <span style="color: #d33682; font-style: italic;">=</span> pinv(X<span style="color: #d33682; font-style: italic;">'*</span>X)<span style="color: #d33682; font-style: italic;">*</span>X<span style="color: #d33682; font-style: italic;">'*</span>y
+  <span style="color: #96A7A9; font-style: italic;">%</span>
+  <span style="color: #96A7A9; font-style: italic;">% test it</span>
+  x_1 <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2104</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">45</span>]<span style="color: #d33682; font-style: italic;">;</span>
+  x_1 <span style="color: #d33682; font-style: italic;">*</span> theta
+</pre>
+</div>
+
+<pre class="example">
+theta =
+
+   188.4003
+     0.3866
+   -56.1382
+   -92.9673
+    -3.7378
+ans = 460.00
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org673a300" class="outline-3">
+<h3 id="org673a300"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
+<div class="outline-text-3" id="text-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Gradient Descent</th>
+<th scope="col" class="org-left">Normal Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Need to choose \(\alpha\)</td>
+<td class="org-left">No \(\alpha\) to choose</td>
+</tr>
+
+<tr>
+<td class="org-left">Iterative approach \(O(kn^2)\)</td>
+<td class="org-left">No iteration needed. This is an analytical approach \(O(n^3)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Works well even for huge number of n=features</td>
+<td class="org-left">Need to compute the inverse of a \(n\times n\) matrix. Therefore, slow for large number of features</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+At \(n > 1,000,000\) it is probably the only option in a reasonably modern computer.
+</p>
+</div>
+</div>
+<div id="outline-container-orge713383" class="outline-3">
+<h3 id="orge713383"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Some matrices are not invertible
+<ul class="org-ul">
+<li>Redundant features: reduce features, or use &rsquo;regularization&rsquo; (seen later).</li>
+<li>\(m < n\): more features than training points.</li>
+</ul></li>
+<li>Ocave&rsquo;s <code>pinv()</code> is <b>pseudo-inverse</b>, which does &ldquo;the right thing&rdquo; even if the matrix has no inverse (???)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4b6faa7" class="outline-2">
+<h2 id="org4b6faa7"><span class="section-number-2">3.</span> Programming Assignment</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+<div id="outline-container-org49beb3b" class="outline-3">
+<h3 id="org49beb3b"><span class="section-number-3">3.1.</span> Octave Tutorial</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">not equal is ~=</span>
+<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">~=</span> <span style="color: #6c71c4; font-weight: bold;">2</span>
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">and and or are like in C. but xor is a function</span>
+<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">&amp;&amp;</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #d33682; font-style: italic;">||</span> xor(<span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">0</span>)
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">vector/matrix assignments use spaces for elements in the</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">same row, and semicolons for going to the next row</span>
+A<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span>
+   <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]
+B<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">100</span><span style="color: #d33682; font-style: italic;">;</span>
+   <span style="color: #6c71c4; font-weight: bold;">200</span>
+   <span style="color: #6c71c4; font-weight: bold;">300</span>]
+C<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #6c71c4; font-weight: bold;">20</span> <span style="color: #6c71c4; font-weight: bold;">30</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">40</span> <span style="color: #6c71c4; font-weight: bold;">50</span> <span style="color: #6c71c4; font-weight: bold;">60</span>]
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">finishing the line with semicolon doesn't show it in the output.</span>
+a <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">32</span>
+b <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">43</span><span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">show stuff on screen</span>
+disp(a)
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">auto fill a vector start:step:end (inclusive)</span>
+D <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">13</span>
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">transpose is the apostrophe</span>
+E <span style="color: #d33682; font-style: italic;">=</span> (<span style="color: #6c71c4; font-weight: bold;">0</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">0.2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">'</span>
+<span style="color: #96A7A9; font-style: italic;">%</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Useful matrices</span>
+F <span style="color: #d33682; font-style: italic;">=</span> ones(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">3</span>)
+G <span style="color: #d33682; font-style: italic;">=</span> zeros(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">2</span>)
+Hu <span style="color: #d33682; font-style: italic;">=</span> rand(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% uniform distribution in [0,1]</span>
+Hn <span style="color: #d33682; font-style: italic;">=</span> randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% normal distribution with mu=0 std=1</span>
+I <span style="color: #d33682; font-style: italic;">=</span> eye(<span style="color: #6c71c4; font-weight: bold;">3</span>)
+</pre>
+</div>
+
+<pre class="example" id="orgab8712a">
+ans = 1
+octave&gt; octave&gt; ans = 1
+octave&gt; octave&gt; octave&gt; &gt; A =
+
+   1   2
+   3   4
+&gt; &gt; B =
+
+   100
+   200
+   300
+C =
+
+   10   20   30
+   40   50   60
+a = 32
+32
+D =
+
+    5    7    9   11   13
+E =
+
+        0
+   0.2000
+   0.4000
+   0.6000
+   0.8000
+   1.0000
+F =
+
+   1   1   1
+   1   1   1
+G =
+
+   0   0
+   0   0
+Hu =
+
+   0.070009   0.268469   0.985220   0.106663
+Hn =
+
+   1.3337   0.1293   1.1854   0.6314
+I =
+
+Diagonal Matrix
+
+   1   0   0
+   0   1   0
+   0   0   1
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">random variable with mean=-10, and variance=10</span>
+X <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #d33682; font-style: italic;">+</span> sqrt(<span style="color: #6c71c4; font-weight: bold;">10</span>)<span style="color: #d33682; font-style: italic;">*</span>randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">10000</span>)<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">plot its histogram with 50 bins</span>
+hist(X<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">50</span>)<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">set</span>
+<span style="color: #96A7A9; font-style: italic;">%</span><span style="color: #96A7A9; font-style: italic;">set (gca, 'looseinset', [0 0 0 0]);</span>
+set(gcf<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Units'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'pixels'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Position'</span><span style="color: #d33682; font-style: italic;">,</span> [<span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">800</span> <span style="color: #6c71c4; font-weight: bold;">380</span>]<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Visible'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'off'</span>)
+print(<span style="color: #2aa198;">'figs/normal_plot.png'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-dpng'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-r300'</span>)<span style="color: #d33682; font-style: italic;">;</span>
+</pre>
+</div>
+
+
+<div id="org675ad61" class="figure">
+<p><img src="figs/normal_plot.png" alt="normal_plot.png" width="700px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+\(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Claudio Parra</p>
+<p class="date">Created: 2023-07-19 Wed 00:36</p>
+</div>
+</body>
+</html>

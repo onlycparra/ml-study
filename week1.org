@@ -6,7 +6,7 @@
 #+OPTIONS: toc:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 
-[[file:week1_notes.org][.]] [[file:week2_notes.org][Week 2]]
+[[file:week1.org][.]] [[file:week2.org][Week 2]]
 
 * Introduction
 - Supervised: you give the right answer to the machine, so it can learn from it.
