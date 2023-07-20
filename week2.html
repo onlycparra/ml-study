@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-19 Wed 00:36 -->
+<!-- 2023-07-19 Wed 19:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 2</title>
@@ -234,12 +234,12 @@
 <a href="week1.html">Week 1</a> <a href="week3.html">Week 3</a>
 </p>
 
-<div id="outline-container-orgf287533" class="outline-2">
-<h2 id="orgf287533"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
+<div id="outline-container-org5d2e748" class="outline-2">
+<h2 id="org5d2e748"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgeed4bb3" class="outline-3">
-<h3 id="orgeed4bb3"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
+<div id="outline-container-orgf66b735" class="outline-3">
+<h3 id="orgf66b735"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
@@ -340,8 +340,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org5b44574" class="outline-3">
-<h3 id="org5b44574"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
+<div id="outline-container-orga04333e" class="outline-3">
+<h3 id="orga04333e"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>The idea is the same as with less variables. Given that the Cost function is \(\Theta^{T}x^{(i)}\), where \(x^{(i)}\) is the \(i\)-th training example, and \(x^{(i)}_{0} = 1\), to match \(\Theta_0\), then all the derivatives to update all the \(\Theta_{j}\) are easy to compute:
@@ -364,12 +364,12 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org53ff3da" class="outline-3">
-<h3 id="org53ff3da"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
+<div id="outline-container-org7371f6b" class="outline-3">
+<h3 id="org7371f6b"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org748af54" class="outline-4">
-<h4 id="org748af54"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
+<div id="outline-container-org17ef0f3" class="outline-4">
+<h4 id="org17ef0f3"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>Make sure the values of different features take values that range in similar values, this makes GD converge quickly. (this makes me thing on the disproportioned representation of skin surface in the brain, hands and face are huge, legs and backs are tiny.)</li>
@@ -378,8 +378,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd98a18d" class="outline-4">
-<h4 id="orgd98a18d"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
+<div id="outline-container-orgadcc442" class="outline-4">
+<h4 id="orgadcc442"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
 <li>Making the values gravitate around 0, by replacing \(x_j\) with \(x_j - \mu_j\)</li>
@@ -387,8 +387,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org8797514" class="outline-4">
-<h4 id="org8797514"><span class="section-number-4">1.3.3.</span> Both together</h4>
+<div id="outline-container-org0e7ea62" class="outline-4">
+<h4 id="org0e7ea62"><span class="section-number-4">1.3.3.</span> Both together</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <ul class="org-ul">
 <li>The vid. talks about the denominator being either the range of values \((\text{max}(x_j)-\text{min}(x_j))\) or std deviation. Doing this you end up with values roughly between \([-0.5,0.5]\).
@@ -401,8 +401,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </div>
 </div>
 
-<div id="outline-container-org769bbdd" class="outline-3">
-<h3 id="org769bbdd"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
+<div id="outline-container-org042550a" class="outline-3">
+<h3 id="org042550a"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it.</li>
@@ -413,16 +413,16 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine \(\Theta\) with each iteration, so we can see whether it converges or not.
 </p>
 
-<div id="org817cd93" class="figure">
-<p><img src="figs/learning_rate_a.png" alt="learning_rate_a.png" width="600px" />
+<div id="org6181ce6" class="figure">
+<p><img src="week2/learning_rate_a.png" alt="learning_rate_a.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 <li><p>
 Here an example with a smaller \(\alpha\). The steps are smaller, so it should take longer to to converge, but the chances of actually converging to our \(\Theta^{\star}\) without getting lost in the way, are better.
 </p>
 
-<div id="orgac2aeb4" class="figure">
-<p><img src="figs/learning_rate_b.png" alt="learning_rate_b.png" width="600px" />
+<div id="org0edd2d7" class="figure">
+<p><img src="week2/learning_rate_b.png" alt="learning_rate_b.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 <li>An automatic convergence test could be &ldquo;if \(J(\Theta)\) is smaller than some \(\varepsilon\), then we say that \(J\) has converged&rdquo;. But it is often difficult to establish the actual value of such \(\varepsilon\).</li>
@@ -436,15 +436,15 @@ It has been demonstrated (by some ML nerds) that if \(\alpha\) is sufficiently s
 <li>C \(\alpha=1\)</li>
 </ul>
 
-<div id="org92e420a" class="figure">
-<p><img src="figs/learning_rate_diff_alpha.png" alt="learning_rate_diff_alpha.png" width="600px" />
+<div id="org702ecfe" class="figure">
+<p><img src="week2/learning_rate_diff_alpha.png" alt="learning_rate_diff_alpha.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org63c40fd" class="outline-3">
-<h3 id="org63c40fd"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
+<div id="outline-container-org72956a3" class="outline-3">
+<h3 id="org72956a3"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Our hypothesis need not be linear (as shown below).
@@ -476,12 +476,12 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 </div>
 </div>
 
-<div id="outline-container-org29cdd00" class="outline-2">
-<h2 id="org29cdd00"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
+<div id="outline-container-org67bd800" class="outline-2">
+<h2 id="org67bd800"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org185d765" class="outline-3">
-<h3 id="org185d765"><span class="section-number-3">2.1.</span> Normal Equation</h3>
+<div id="outline-container-orgd7c9d18" class="outline-3">
+<h3 id="orgd7c9d18"><span class="section-number-3">2.1.</span> Normal Equation</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).</li>
@@ -489,8 +489,8 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 For example, take this dataset
 </p>
 
-<div id="org24433cb" class="figure">
-<p><img src="figs/normal_fun_1.png" alt="normal_fun_1.png" width="600px" />
+<div id="org7bceabd" class="figure">
+<p><img src="week2/normal_fun_1.png" alt="normal_fun_1.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 <li><p>
@@ -527,8 +527,8 @@ ans = 460.00
 </div>
 </div>
 
-<div id="outline-container-org673a300" class="outline-3">
-<h3 id="org673a300"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
+<div id="outline-container-org0767ae1" class="outline-3">
+<h3 id="org0767ae1"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
 <div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -567,8 +567,8 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </p>
 </div>
 </div>
-<div id="outline-container-orge713383" class="outline-3">
-<h3 id="orge713383"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
+<div id="outline-container-org1486d46" class="outline-3">
+<h3 id="org1486d46"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Some matrices are not invertible
@@ -581,73 +581,113 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </div>
 </div>
 </div>
-<div id="outline-container-org4b6faa7" class="outline-2">
-<h2 id="org4b6faa7"><span class="section-number-2">3.</span> Programming Assignment</h2>
+<div id="outline-container-orgcca1855" class="outline-2">
+<h2 id="orgcca1855"><span class="section-number-2">3.</span> Programming Assignment</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-
-<div id="outline-container-org49beb3b" class="outline-3">
-<h3 id="org49beb3b"><span class="section-number-3">3.1.</span> Octave Tutorial</h3>
+<div id="outline-container-org29f1462" class="outline-3">
+<h3 id="org29f1462"><span class="section-number-3">3.1.</span> Octave Tutorial</h3>
 <div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org76ce21c" class="outline-4">
+<h4 id="org76ce21c"><span class="section-number-4">3.1.1.</span> Basic Operations</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Not equal is <code>~=</code>.
+</p>
 <div class="org-src-container">
-<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">not equal is ~=</span>
-<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">~=</span> <span style="color: #6c71c4; font-weight: bold;">2</span>
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">and and or are like in C. but xor is a function</span>
-<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">&amp;&amp;</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #d33682; font-style: italic;">||</span> xor(<span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">0</span>)
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">vector/matrix assignments use spaces for elements in the</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">same row, and semicolons for going to the next row</span>
-A<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span>
+<pre class="src src-octave"><span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">~=</span> <span style="color: #6c71c4; font-weight: bold;">2</span>
+</pre>
+</div>
+<pre class="example">
+ans = 1
+</pre>
+
+
+<p>
+Logical operations AND and OR are like in C. but xor is a function.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave"><span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #d33682; font-style: italic;">&amp;&amp;</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #d33682; font-style: italic;">||</span> xor(<span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">0</span>)
+</pre>
+</div>
+<pre class="example">
+ans = 1
+</pre>
+
+
+<p>
+Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">A<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span>
    <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]
 B<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">100</span><span style="color: #d33682; font-style: italic;">;</span>
    <span style="color: #6c71c4; font-weight: bold;">200</span>
    <span style="color: #6c71c4; font-weight: bold;">300</span>]
 C<span style="color: #d33682; font-style: italic;">=</span>[<span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #6c71c4; font-weight: bold;">20</span> <span style="color: #6c71c4; font-weight: bold;">30</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">40</span> <span style="color: #6c71c4; font-weight: bold;">50</span> <span style="color: #6c71c4; font-weight: bold;">60</span>]
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">finishing the line with semicolon doesn't show it in the output.</span>
-a <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">32</span>
-b <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">43</span><span style="color: #d33682; font-style: italic;">;</span>
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">show stuff on screen</span>
-disp(a)
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">auto fill a vector start:step:end (inclusive)</span>
-D <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">13</span>
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">transpose is the apostrophe</span>
-E <span style="color: #d33682; font-style: italic;">=</span> (<span style="color: #6c71c4; font-weight: bold;">0</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">0.2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">'</span>
-<span style="color: #96A7A9; font-style: italic;">%</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Useful matrices</span>
-F <span style="color: #d33682; font-style: italic;">=</span> ones(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">3</span>)
-G <span style="color: #d33682; font-style: italic;">=</span> zeros(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">2</span>)
-Hu <span style="color: #d33682; font-style: italic;">=</span> rand(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% uniform distribution in [0,1]</span>
-Hn <span style="color: #d33682; font-style: italic;">=</span> randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% normal distribution with mu=0 std=1</span>
-I <span style="color: #d33682; font-style: italic;">=</span> eye(<span style="color: #6c71c4; font-weight: bold;">3</span>)
 </pre>
 </div>
-
-<pre class="example" id="orgab8712a">
-ans = 1
-octave&gt; octave&gt; ans = 1
-octave&gt; octave&gt; octave&gt; &gt; A =
+<pre class="example" id="orgf47de1c">
+A =
 
    1   2
    3   4
-&gt; &gt; B =
+
+B =
 
    100
    200
    300
+
 C =
 
    10   20   30
    40   50   60
+
+</pre>
+
+<p>
+Finishing the line with semicolon doesn&rsquo;t show it in the output.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">a <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">32</span>
+b <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">43</span><span style="color: #d33682; font-style: italic;">;</span>
+</pre>
+</div>
+<pre class="example">
 a = 32
-32
+</pre>
+
+
+<p>
+Show stuff on screen.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">a <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">37</span><span style="color: #d33682; font-style: italic;">;</span>
+disp(a)
+printf(<span style="color: #2aa198;">'Two decimal points: %.2f'</span><span style="color: #d33682; font-style: italic;">,</span> a)<span style="color: #d33682; font-style: italic;">;</span>
+</pre>
+</div>
+<pre class="example">
+37
+Two decimal points: 37.00
+</pre>
+
+
+<p>
+Auto fill a vector <code>start:step:end</code> (inclusive). Transpose is the apostrophe.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">D <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">13</span>
+E <span style="color: #d33682; font-style: italic;">=</span> (<span style="color: #6c71c4; font-weight: bold;">0</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">0.2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">'</span>
+</pre>
+</div>
+<pre class="example" id="org9f3cafb">
 D =
 
     5    7    9   11   13
+
 E =
 
         0
@@ -656,46 +696,292 @@ E =
    0.6000
    0.8000
    1.0000
-F =
 
-   1   1   1
-   1   1   1
-G =
-
-   0   0
-   0   0
-Hu =
-
-   0.070009   0.268469   0.985220   0.106663
-Hn =
-
-   1.3337   0.1293   1.1854   0.6314
-I =
-
-Diagonal Matrix
-
-   1   0   0
-   0   1   0
-   0   0   1
 </pre>
+</div>
+</div>
 
-
+<div id="outline-container-org6fe7819" class="outline-4">
+<h4 id="org6fe7819"><span class="section-number-4">3.1.2.</span> Plotting Data</h4>
+<div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
-<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">random variable with mean=-10, and variance=10</span>
+<pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">random variable with mean=-10, and variance=10. and plot its histogram with 30 bins</span>
 X <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #d33682; font-style: italic;">+</span> sqrt(<span style="color: #6c71c4; font-weight: bold;">10</span>)<span style="color: #d33682; font-style: italic;">*</span>randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">10000</span>)<span style="color: #d33682; font-style: italic;">;</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">plot its histogram with 50 bins</span>
-hist(X<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">50</span>)<span style="color: #d33682; font-style: italic;">;</span>
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">set</span>
-<span style="color: #96A7A9; font-style: italic;">%</span><span style="color: #96A7A9; font-style: italic;">set (gca, 'looseinset', [0 0 0 0]);</span>
-set(gcf<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Units'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'pixels'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Position'</span><span style="color: #d33682; font-style: italic;">,</span> [<span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">800</span> <span style="color: #6c71c4; font-weight: bold;">380</span>]<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'Visible'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'off'</span>)
-print(<span style="color: #2aa198;">'figs/normal_plot.png'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-dpng'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-r300'</span>)<span style="color: #d33682; font-style: italic;">;</span>
+hist(X<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">30</span>)<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">config output figure</span>
+set(gcf<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'paperposition'</span><span style="color: #d33682; font-style: italic;">,</span> [<span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">8</span> <span style="color: #6c71c4; font-weight: bold;">3</span>]<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'visible'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'off'</span>)
+print(<span style="color: #2aa198;">'week2/normal_plot.png'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-dpng'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'-r300'</span>)<span style="color: #d33682; font-style: italic;">;</span>
 </pre>
 </div>
 
-
-<div id="org675ad61" class="figure">
-<p><img src="figs/normal_plot.png" alt="normal_plot.png" width="700px" />
+<div id="org5f39798" class="figure">
+<p><img src="week2/normal_plot.png" alt="normal_plot.png" style="width: min(800px,100%);" />
 </p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef8b36a" class="outline-4">
+<h4 id="orgef8b36a"><span class="section-number-4">3.1.3.</span> Slicing Matrices</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<div class="org-src-container">
+<pre class="src src-octave">A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">11</span> <span style="color: #6c71c4; font-weight: bold;">12</span> <span style="color: #6c71c4; font-weight: bold;">13</span> <span style="color: #6c71c4; font-weight: bold;">14</span> <span style="color: #6c71c4; font-weight: bold;">15</span> <span style="color: #6c71c4; font-weight: bold;">16</span><span style="color: #d33682; font-style: italic;">;</span>
+     <span style="color: #6c71c4; font-weight: bold;">21</span> <span style="color: #6c71c4; font-weight: bold;">22</span> <span style="color: #6c71c4; font-weight: bold;">23</span> <span style="color: #6c71c4; font-weight: bold;">24</span> <span style="color: #6c71c4; font-weight: bold;">25</span> <span style="color: #6c71c4; font-weight: bold;">26</span><span style="color: #d33682; font-style: italic;">;</span>
+     <span style="color: #6c71c4; font-weight: bold;">31</span> <span style="color: #6c71c4; font-weight: bold;">32</span> <span style="color: #6c71c4; font-weight: bold;">33</span> <span style="color: #6c71c4; font-weight: bold;">34</span> <span style="color: #6c71c4; font-weight: bold;">35</span> <span style="color: #6c71c4; font-weight: bold;">36</span><span style="color: #d33682; font-style: italic;">;</span>
+     <span style="color: #6c71c4; font-weight: bold;">41</span> <span style="color: #6c71c4; font-weight: bold;">42</span> <span style="color: #6c71c4; font-weight: bold;">43</span> <span style="color: #6c71c4; font-weight: bold;">44</span> <span style="color: #6c71c4; font-weight: bold;">45</span> <span style="color: #6c71c4; font-weight: bold;">46</span>]
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">get element in row 2 and column 4</span>
+one_elem <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>)
+</pre>
+</div>
+<pre class="example">
+A =
+
+   11   12   13   14   15   16
+   21   22   23   24   25   26
+   31   32   33   34   35   36
+   41   42   43   44   45   46
+one_elem = 24
+</pre>
+
+
+<p>
+To select a range of elements we can use the <code>m:n</code> notation. You can replace <code>n</code> with <code>end</code>. This allow us to extract submatrices, columns and rows.
+</p>
+<dl class="org-dl">
+<dt><code>m:n</code>  </dt><dd>&ldquo;everything from m to n&rdquo; (including elements <code>m</code> and <code>n</code>)</dd>
+<dt><code>1:n</code>  </dt><dd>&ldquo;all from the beginning to n&rdquo;</dd>
+<dt><code>m:end</code></dt><dd>&ldquo;all from m to the end&rdquo;</dd>
+<dt><code>1:end</code></dt><dd>&ldquo;all from beginning to end&rdquo;. You can also use the shorthand <code>:</code></dd>
+</dl>
+
+<p>
+Get a single element
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">elem <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">3</span>)
+</pre>
+</div>
+<pre class="example">
+elem = 43
+</pre>
+
+
+<p>
+Get a submatrix defining row range (from 2 to 4) and column range (from 3 to 5).
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">sub_matrix <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">5</span>)
+</pre>
+</div>
+<pre class="example">
+sub_matrix =
+
+   23   24   25
+   33   34   35
+   43   44   45
+</pre>
+
+
+<p>
+Get the lower right submatrix.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">sub_matrix_lower_right <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">:</span>end<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">:</span>end)
+</pre>
+</div>
+<pre class="example">
+sub_matrix_lower_right =
+
+   24   25   26
+   34   35   36
+   44   45   46
+</pre>
+
+
+<p>
+Get the 3rd column.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">col <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #d33682; font-style: italic;">:,</span><span style="color: #6c71c4; font-weight: bold;">3</span>)
+</pre>
+</div>
+<pre class="example">
+col =
+
+   13
+   23
+   33
+   43
+</pre>
+
+
+<p>
+Get the 4th row.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">row <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,:</span>)
+</pre>
+</div>
+<pre class="example">
+row =
+
+   41   42   43   44   45   46
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org578af31" class="outline-4">
+<h4 id="org578af31"><span class="section-number-4">3.1.4.</span> Moving Data Around</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+Show current directory.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">pwd
+</pre>
+</div>
+<pre class="example">
+ans = /home/claudio/repos/machine-learning
+</pre>
+
+
+<p>
+Content of current directory.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">ls
+</pre>
+</div>
+<pre class="example">
+style.css  week1  week1.html  week1.org  week2	week2.html  week2.org
+</pre>
+
+
+<p>
+Content of directory <code>week2/</code> (in one column <code>-1</code>).
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">ls <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">1</span> week2
+</pre>
+</div>
+<pre class="example">
+featuresX.dat
+learning_rate_a.png
+learning_rate_b.png
+learning_rate_diff_alpha.png
+normal_fun_1.png
+normal_plot.png
+</pre>
+
+
+<p>
+I have a file <code>week2/featuresX.dat</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> week2/my_dataset.dat
+</pre>
+</div>
+<pre class="example">
+2104 5 1 45 460
+1416 3 2 40 232
+1534 3 2 30 315
+ 852 2 1 36 178
+</pre>
+
+
+<p>
+To load it in Octave, use the function <code>load</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">data <span style="color: #d33682; font-style: italic;">=</span> load(<span style="color: #2aa198;">'week2/my_dataset.dat'</span>)
+size(data)
+X <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">:</span>(end<span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">1</span>))
+Y <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span>end)
+</pre>
+</div>
+<pre class="example" id="org2d8fb10">
+data =
+
+   2104      5      1     45    460
+   1416      3      2     40    232
+   1534      3      2     30    315
+    852      2      1     36    178
+
+ans =
+
+   4   5
+
+X =
+
+   2104      5      1     45
+   1416      3      2     40
+   1534      3      2     30
+    852      2      1     36
+
+Y =
+
+   460
+   232
+   315
+   178
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org17b4d7d" class="outline-4">
+<h4 id="org17b4d7d"><span class="section-number-4">3.1.5.</span> Show and Save Variables</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<div class="org-src-container">
+<pre class="src src-octave">a <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span>
+b <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">4</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #6c71c4; font-weight: bold;">6</span>]<span style="color: #d33682; font-style: italic;">;</span>
+C <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]<span style="color: #d33682; font-style: italic;">;</span>
+who
+whos
+</pre>
+</div>
+<pre class="example" id="orgc699ccd">
+Variables visible from the current scope:
+
+C    a    ans  b
+Variables visible from the current scope:
+
+variables in scope: top scope
+
+  Attr   Name        Size                     Bytes  Class
+  ====   ====        ====                     =====  =====
+         C           2x2                         32  double
+         a           1x1                          8  double
+         ans         1x13                        13  char
+         b           1x3                         24  double
+
+Total is 21 elements using 77 bytes
+</pre>
+
+<p>
+Save variable to a file (in this case, the matrix <code>A</code> defined in the previous section)
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">save week2<span style="color: #d33682; font-style: italic;">/</span>matrixA.dat A
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> week2/matrixA.dat
+</pre>
+</div>
+
+<pre class="example" id="org1808692">
+# Created by Octave 7.3.0, Wed Jul 19 19:17:13 2023 PDT &lt;claudio@ncc91277&gt;
+# name: A
+# type: matrix
+# rows: 4
+# columns: 6
+ 11 12 13 14 15 16
+ 21 22 23 24 25 26
+ 31 32 33 34 35 36
+ 41 42 43 44 45 46
+
+
+</pre>
 </div>
 </div>
 </div>
@@ -713,7 +999,7 @@ print(<span style="color: #2aa198;">'figs/normal_plot.png'</span><span style="co
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-19 Wed 00:36</p>
+<p class="date">Created: 2023-07-19 Wed 19:18</p>
 </div>
 </body>
 </html>

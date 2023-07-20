@@ -38,7 +38,7 @@ h1 ~ p > a {
 }
 
 h1 ~ p > a:hover {
-    box-shadow: 0 0 6px var(--col-accent-2);
+  box-shadow: 0 0 6px var(--col-accent-2);
   border: solid 2px var(--col-accent-1);
   background: var(--col-accent-1);
   color: white
@@ -51,11 +51,43 @@ h1 ~ p > a:active {
 table {
   margin-inline: auto;
 }
-pre.example{
-  border: none;
-  border-left: solid 8px #ead788;
-  background: #fff6d1;
+
+pre {
+  border-style: solid;
+  border-width: 1px 1px 1px 8px;
+  border-color: #aaa;
   border-radius: 0;
+}
+
+pre.src {
+  margin-bottom: 0;
+}
+
+pre.example {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: baseline;
+  margin-top: 0;
+  background: #fff6d1;
+}
+.org-src-container + .example {
+  border-top-style: none;
+}
+
+.org-src-container + .example::after {
+  content: 'Result';
+  padding: 0;
+  margin: 0;
+}
+pre.example::after {
+  display: none;
+  right: 12px;
+  padding: 3px;
+  color: #555;
+}
+pre.example:hover::after {
+  display: inline-block;
 }
 #content{
   margin-inline: 2vw;
@@ -121,4 +153,11 @@ h2.footnotes {
   font-size: 1.2em;
   border-radius: 6px 6px 0 0;
   box-shadow: 0 0 6px var(--col-accent-1);
+}
+code {
+  background: #f2f2f2;
+  padding: 0.2rem 0.4rem 0 0.4rem;
+  font-size: 1rem;
+  border-radius: 0;
+  border: solid 1px #d8d8d8;
 }

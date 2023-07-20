@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-18 Tue 18:47 -->
+<!-- 2023-07-19 Wed 18:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 1</title>
@@ -234,8 +234,8 @@
 <a href="week1.html">.</a> <a href="week2.html">Week 2</a>
 </p>
 
-<div id="outline-container-org109260b" class="outline-2">
-<h2 id="org109260b"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org20494bf" class="outline-2">
+<h2 id="org20494bf"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Supervised: you give the right answer to the machine, so it can learn from it.
@@ -246,8 +246,8 @@
 <li>Unsupervised: the machine is asked to find structure within the given data.</li>
 </ul>
 </div>
-<div id="outline-container-orgf6b8b8a" class="outline-3">
-<h3 id="orgf6b8b8a"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
+<div id="outline-container-orga679723" class="outline-3">
+<h3 id="orga679723"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> classification seems to be a discretization of regression.
@@ -262,12 +262,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8e5329" class="outline-2">
-<h2 id="orgf8e5329"><span class="section-number-2">2.</span> Model and Cost Function</h2>
+<div id="outline-container-orgddd964e" class="outline-2">
+<h2 id="orgddd964e"><span class="section-number-2">2.</span> Model and Cost Function</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org8751507" class="outline-3">
-<h3 id="org8751507"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
+<div id="outline-container-org21596da" class="outline-3">
+<h3 id="org21596da"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><b>Dataset</b>: set of data points.</li>
@@ -283,8 +283,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f622ce" class="outline-3">
-<h3 id="org2f622ce"><span class="section-number-3">2.2.</span> Model representation</h3>
+<div id="outline-container-org65c8d67" class="outline-3">
+<h3 id="org65c8d67"><span class="section-number-3">2.2.</span> Model representation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The function \(h\) has the following shape:
@@ -301,16 +301,15 @@ h_{\Theta}(x) &= \Theta_0 + \Theta_1x_1 + \Theta_2x_2 \cdots \Theta_{n-1}x_{n-1}
 Where \(x_j\) is the j-th feature of a given data point. The idea is that for a new, unseen \(x'\), \(h_{\Theta}(x') \approx f(x')\) where \(f\) is the actual underlying function producing the dataset.
 </p>
 
-
-<div id="org680b027" class="figure">
-<p><img src="figs/ml-diagram.png" alt="ml-diagram.png" />
+<div id="orgb147dfb" class="figure">
+<p><img src="week1/ml-diagram.png" alt="ml-diagram.png" style="width: min(250px,100%);" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd33b80a" class="outline-3">
-<h3 id="orgd33b80a"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
+<div id="outline-container-org18bf7fb" class="outline-3">
+<h3 id="org18bf7fb"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>By convension denoted by \(J\).</li>
@@ -322,8 +321,8 @@ Where \(m\) is the number of training examples in the training set.</li>
 <li><b>Do not confuse</b> \(h_\Theta(x)\) (the predictor), with \(J(\Theta)\) (the &ldquo;how good the predictor is&rdquo;)</li>
 </ul>
 </div>
-<div id="outline-container-org8c2505f" class="outline-4">
-<h4 id="org8c2505f"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
+<div id="outline-container-orgd98e94d" class="outline-4">
+<h4 id="orgd98e94d"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> I get the \(\frac{1}{m}\) part of the cost function: we want an average <i>squared-difference</i> but why are we didiving by \(2\)? Wouldn&rsquo;t it make more sense to compute the square root?
@@ -336,12 +335,12 @@ Where \(m\) is the number of training examples in the training set.</li>
 </div>
 </div>
 
-<div id="outline-container-org34074ce" class="outline-2">
-<h2 id="org34074ce"><span class="section-number-2">3.</span> Parameter Learning</h2>
+<div id="outline-container-org1b7429f" class="outline-2">
+<h2 id="org1b7429f"><span class="section-number-2">3.</span> Parameter Learning</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgfffea96" class="outline-3">
-<h3 id="orgfffea96"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
+<div id="outline-container-orgb761d7a" class="outline-3">
+<h3 id="orgb761d7a"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>The way to update each parameter is this
@@ -354,16 +353,16 @@ Where \(\alpha\) is the <i>learning rate</i>. and the expression at the right of
 </div>
 </div>
 </div>
-<div id="outline-container-orgdf9962d" class="outline-2">
-<h2 id="orgdf9962d"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
+<div id="outline-container-org1792f5c" class="outline-2">
+<h2 id="org1792f5c"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b>Matrix</b>: rows \(\times\) cols. Usually in uppercase.</li>
 <li><b>Vector</b>: a single column. Usually in lowercase.</li>
 </ul>
 </div>
-<div id="outline-container-org78116b8" class="outline-3">
-<h3 id="org78116b8"><span class="section-number-3">4.1.</span> Dimensions</h3>
+<div id="outline-container-org30095a3" class="outline-3">
+<h3 id="org30095a3"><span class="section-number-3">4.1.</span> Dimensions</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">The ; inside of the matrix denotes we are</span>
@@ -381,7 +380,7 @@ v_3  <span style="color: #d33682; font-style: italic;">=</span> v(<span style="c
 </pre>
 </div>
 
-<pre class="example" id="orgc3fbf77">
+<pre class="example" id="org1bafdd5">
 A =
 
     1    2    3
@@ -406,8 +405,8 @@ v_3 = 3
 </div>
 
 
-<div id="outline-container-org755391b" class="outline-3">
-<h3 id="org755391b"><span class="section-number-3">4.2.</span> Scalar Operations</h3>
+<div id="outline-container-org505d2b6" class="outline-3">
+<h3 id="org505d2b6"><span class="section-number-3">4.2.</span> Scalar Operations</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize matrix A and B, and scalar s</span>
@@ -421,8 +420,7 @@ div_As <span style="color: #d33682; font-style: italic;">=</span> A <span style=
 add_As <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">+</span> s
 </pre>
 </div>
-
-<pre class="example" id="orgd6a5e43">
+<pre class="example" id="orga280523">
 A =
 
    1   2   4
@@ -456,79 +454,65 @@ add_As =
 </div>
 </div>
 
-<div id="outline-container-orgc3385e2" class="outline-3">
-<h3 id="orgc3385e2"><span class="section-number-3">4.3.</span> Matrix Vector Multiplitation</h3>
+<div id="outline-container-org412f871" class="outline-3">
+<h3 id="org412f871"><span class="section-number-3">4.3.</span> Matrix-Vector and Matrix-Matrix Multiplitation</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
+<li>I find it easier to see the multiplication operation through the following layout, where whe two inner sizes (A.width and B.height) are matched in the top left square (magenta), and the result of the multiplication naturally falls in the lower right of the arrange.</li>
 <li><p>
-I find it easier to see the operation if I dispose the operands using this layout:
+To compute a given element \(C_{ij}\), one must dot-product the row \(i\) of the first matrix, and the column \(j\) of the second matrix, which again, looks very natural.
 </p>
-<pre class="example" id="org337a4b6">
-                 B=
-              |  x
-        nxn   |  y
-      square  |  z
-      --------+----
-      1  2  3 | [*]  &lt;---- 1x + 2y + 3z
-  A=  4  5  6 | [ ]
-      7  8  9 | [ ]
-      A  B  C | [ ]
-</pre>
 
+<div id="org6d535e4" class="figure">
+<p><img src="week1/mat-mult-1.png" alt="mat-mult-1.png" style="width: min(350px,100%);" />
+</p>
+</div></li>
+<li>For consecutive multiplications, the diagram can be easily extended by placing the new matrix at the right of the second operand.</li>
+<li><p>
+The only thing to take care of, is to match the width of the intermediate result with the height of the new operand. For example, the width of \(A \times B\), with \(C\).
+</p>
+
+<div id="org76ee3bb" class="figure">
+<p><img src="week1/mat-mult-2.png" alt="mat-mult-2.png" style="width: min(800px,100%);" />
+</p>
+</div></li>
+<li>Not commutative \(A\times B \neq B\times A\).</li>
+<li>Associative \((A \times B) \times C = A \times (B \times C)\).</li>
+<li><p>
+In Octave
+</p>
 <div class="org-src-container">
-<pre class="src src-octave">  <span style="color: #96A7A9; font-style: italic;">% Initialize matrix A and vector v</span>
-  A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">5</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">6</span><span style="color: #d33682; font-style: italic;">;</span><span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">8</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">9</span>]
-  v <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">1</span>]
-  Av <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">*</span> v
+<pre class="src src-octave">  A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">4</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #6c71c4; font-weight: bold;">6</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">7</span> <span style="color: #6c71c4; font-weight: bold;">8</span> <span style="color: #6c71c4; font-weight: bold;">9</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">3</span>]
+  B <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">0</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">2</span>]
+  AB <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">*</span> B
 </pre>
 </div>
-
-<pre class="example" id="org607f194">
+<pre class="example" id="orgf6c033c">
   A =
 
      1   2   3
      4   5   6
      7   8   9
-  v =
+     1   2   3
+  B =
 
-     1
-     2
-     1
-  Av =
+     2   0   0
+     0   2   0
+     0   0   2
+  AB =
 
-      8
-     20
-     32
+      2    4    6
+      8   10   12
+     14   16   18
+      2    4    6
 </pre></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org882b281" class="outline-3">
-<h3 id="org882b281"><span class="section-number-3">4.4.</span> Matrix Matrix Multiplication</h3>
+
+<div id="outline-container-orgd388cba" class="outline-3">
+<h3 id="orgd388cba"><span class="section-number-3">4.4.</span> Identity</h3>
 <div class="outline-text-3" id="text-4-4">
-<ul class="org-ul">
-<li>Not commutative \(A\times B \neq B\times A\).</li>
-<li>Associative \((A \times B) \times C = A \times (B \times C)\).</li>
-<li><p>
-Similar layout idea
-</p>
-<pre class="example" id="orgbf254d0">
-                    B=
-              |  r  u  x
-        nxn   |  s  v  y
-      square  |  t  w  z
-      --------+----------
-      1  2  3 | [ ][*][ ]  &lt;---- 1u + 2v + 3w
-  A=  4  5  6 | [ ][ ][ ]
-      7  8  9 | [ ][ ][ ]
-      A  B  C | [ ][ ][ ]
-</pre></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org20252dd" class="outline-3">
-<h3 id="org20252dd"><span class="section-number-3">4.5.</span> Identity</h3>
-<div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
 <li>\(I \times A = A\times I = A\)
 <ul class="org-ul">
@@ -538,13 +522,13 @@ Similar layout idea
 </ul>
 </div>
 </div>
-<div id="outline-container-org0c65574" class="outline-3">
-<h3 id="org0c65574"><span class="section-number-3">4.6.</span> Inverse and Transpose</h3>
-<div class="outline-text-3" id="text-4-6">
+<div id="outline-container-org40e014d" class="outline-3">
+<h3 id="org40e014d"><span class="section-number-3">4.5.</span> Inverse and Transpose</h3>
+<div class="outline-text-3" id="text-4-5">
 </div>
-<div id="outline-container-org23db868" class="outline-4">
-<h4 id="org23db868"><span class="section-number-4">4.6.1.</span> Inverse</h4>
-<div class="outline-text-4" id="text-4-6-1">
+<div id="outline-container-org11da799" class="outline-4">
+<h4 id="org11da799"><span class="section-number-4">4.5.1.</span> Inverse</h4>
+<div class="outline-text-4" id="text-4-5-1">
 <ul class="org-ul">
 <li><p>
 If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
@@ -561,15 +545,37 @@ If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
   A <span style="color: #d33682; font-style: italic;">*</span> Ainv_exact
   <span style="color: #96A7A9; font-style: italic;">% This is the precise answer.</span>
 </pre>
-</div></li>
+</div>
+<pre class="example" id="orgdfe1eac">
+  A =
+
+      3    4
+      2   16
+  Ainv_numeric =
+
+     0.400000  -0.100000
+    -0.050000   0.075000
+  ans =
+
+     1.0000e+00   1.1102e-16
+    -2.2204e-16   1.0000e+00
+  Ainv_exact =
+
+     0.400000  -0.100000
+    -0.050000   0.075000
+  ans =
+
+     1.0000  -0.0000
+          0   1.0000
+</pre></li>
 
 <li>A matrix without inverse is said to be <b>Singular</b> or <b>Degenerate</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0924465" class="outline-4">
-<h4 id="org0924465"><span class="section-number-4">4.6.2.</span> Transpose</h4>
-<div class="outline-text-4" id="text-4-6-2">
+<div id="outline-container-org567c84c" class="outline-4">
+<h4 id="org567c84c"><span class="section-number-4">4.5.2.</span> Transpose</h4>
+<div class="outline-text-4" id="text-4-5-2">
 <ul class="org-ul">
 <li>The transpose of a matrix \(A\) is denoted by \(A^{T}\).</li>
 <li><p>
@@ -580,8 +586,7 @@ In octave, it is experssed with an apostrophe.
   At <span style="color: #d33682; font-style: italic;">=</span> A<span style="color: #d33682; font-style: italic;">'</span>
 </pre>
 </div>
-
-<pre class="example" id="org469a009">
+<pre class="example" id="org737bded">
   A =
 
      1   2   3   4
@@ -601,7 +606,7 @@ In octave, it is experssed with an apostrophe.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-18 Tue 18:47</p>
+<p class="date">Created: 2023-07-19 Wed 18:00</p>
 </div>
 </body>
 </html>

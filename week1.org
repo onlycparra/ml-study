@@ -1,11 +1,8 @@
-# #+LATEX_CLASS: article
-# #+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
-
 #+TITLE: Machine Learning -- Week 1
 #+AUTHOR: Claudio Parra
 #+OPTIONS: toc:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
-
+#+PROPERTY: header-args :eval no-export
 [[file:week1.org][.]] [[file:week2.org][Week 2]]
 
 * Introduction
@@ -39,8 +36,8 @@ h_{\Theta}(x) &= \Theta_0 + \Theta_1x_1 + \Theta_2x_2 \cdots \Theta_{n-1}x_{n-1}
 \end{equation}
 
 Where \(x_j\) is the j-th feature of a given data point. The idea is that for a new, unseen \(x'\), \(h_{\Theta}(x') \approx f(x')\) where \(f\) is the actual underlying function producing the dataset.
-
-[[file:figs/ml-diagram.png]]
+#+attr_html: :style width: min(250px,100%);
+[[file:week1/ml-diagram.png]]
 
 ** Cost/Objective Function
 - By convension denoted by \(J\).
@@ -64,7 +61,7 @@ Where \(x_j\) is the j-th feature of a given data point. The idea is that for a 
 - It is still possible to learn with a fixed \(\alpha\). As \(J\) approaches to its minimum, its derivative approaches to zero. This means that each update to \(\Theta\) gets smaller and smaller. This is good, coz as we get closer to the minimum, we want to be more cautious with the steps, so we don't overshoot.
 * Linear Algebra Review
 :PROPERTIES:
-:header-args: :session model_and_cost :exports both :results output
+:header-args+: :exports both :results output
 :END:
 - *Matrix*: rows \(\times\) cols. Usually in uppercase.
 - *Vector*: a single column. Usually in lowercase.
@@ -120,7 +117,6 @@ mult_As = A * s
 div_As = A / s
 add_As = A + s
 #+end_src
-
 #+RESULTS:
 #+begin_example
 A =
@@ -154,27 +150,23 @@ add_As =
    7   5   4
 #+end_example
 
-** Matrix Vector Multiplitation
-- I find it easier to see the operation if I dispose the operands using this layout:
-  #+begin_example
-                 B=
-              |  x
-        nxn   |  y
-      square  |  z
-      --------+----
-      1  2  3 | [*]  <---- 1x + 2y + 3z
-  A=  4  5  6 | [ ]
-      7  8  9 | [ ]
-      A  B  C | [ ]
-  #+end_example
-
+** Matrix-Vector and Matrix-Matrix Multiplitation
+- I find it easier to see the multiplication operation through the following layout, where whe two inner sizes (A.width and B.height) are matched in the top left square (magenta), and the result of the multiplication naturally falls in the lower right of the arrange.
+- To compute a given element \(C_{ij}\), one must dot-product the row \(i\) of the first matrix, and the column \(j\) of the second matrix, which again, looks very natural.
+  #+attr_html: :style width: min(350px,100%);
+  [[file:week1/mat-mult-1.png]]
+- For consecutive multiplications, the diagram can be easily extended by placing the new matrix at the right of the second operand.
+- The only thing to take care of, is to match the width of the intermediate result with the height of the new operand. For example, the width of \(A \times B\), with \(C\).
+  #+attr_html: :style width: min(800px,100%);
+  [[file:week1/mat-mult-2.png]]
+- Not commutative \(A\times B \neq B\times A\).
+- Associative \((A \times B) \times C = A \times (B \times C)\).
+- In Octave
   #+begin_src octave
-  % Initialize matrix A and vector v
-  A = [1, 2, 3; 4, 5, 6;7, 8, 9]
-  v = [1; 2; 1]
-  Av = A * v
+  A = [1 2 3; 4 5 6; 7 8 9; 1 2 3]
+  B = [2 0 0; 0 2 0; 0 0 2]
+  AB = A * B
   #+end_src
-
   #+RESULTS:
   #+begin_example
   A =
@@ -182,34 +174,20 @@ add_As =
      1   2   3
      4   5   6
      7   8   9
-  v =
+     1   2   3
+  B =
 
-     1
-     2
-     1
-  Av =
+     2   0   0
+     0   2   0
+     0   0   2
+  AB =
 
-      8
-     20
-     32
+      2    4    6
+      8   10   12
+     14   16   18
+      2    4    6
   #+end_example
 
-#+RESULTS:
-** Matrix Matrix Multiplication
-- Not commutative \(A\times B \neq B\times A\).
-- Associative \((A \times B) \times C = A \times (B \times C)\).
-- Similar layout idea
-  #+begin_example
-                    B=
-              |  r  u  x
-        nxn   |  s  v  y
-      square  |  t  w  z
-      --------+----------
-      1  2  3 | [ ][*][ ]  <---- 1u + 2v + 3w
-  A=  4  5  6 | [ ][ ][ ]
-      7  8  9 | [ ][ ][ ]
-      A  B  C | [ ][ ][ ]
-  #+end_example
 ** Identity
 - \(I \times A = A\times I = A\)
   - Note that in general those two are \(I\) with different dimensions.
@@ -229,7 +207,6 @@ add_As =
   A * Ainv_exact
   % This is the precise answer.
   #+end_src
-
   #+RESULTS:
   #+begin_example
   A =
@@ -262,7 +239,6 @@ add_As =
   A = [1 2 3 4; 5 6 7 8]
   At = A'
   #+end_src
-
   #+RESULTS:
   #+begin_example
   A =
@@ -276,16 +252,3 @@ add_As =
      3   7
      4   8
   #+end_example
-
-
-* COMMENT CODE EXAMPLES
-#+begin_src python
-import matplotlib.pyplot as plt
-x=[1,2,3,4,5]
-y=[2,3,2,2,1]
-plt.plot(x,y)
-plt.savefig('figs/plot.png')
-#+end_src
-
-#+RESULTS:
-[[file:figs/plot.png]]

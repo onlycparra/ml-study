@@ -1,11 +1,8 @@
-# #+LATEX_CLASS: article
-# #+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
-
 #+TITLE: Machine Learning -- Week 2
 #+AUTHOR: Claudio Parra
 #+OPTIONS: toc:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
-
+#+PROPERTY: header-args :eval no-export
 [[file:week1.org][Week 1]] [[file:week3.org][Week 3]]
 
 * Multivariate Linear Regression
@@ -94,19 +91,19 @@
 - Then, the point of \(\alpha\) is to determine how quickly we go in the direction of the gradient of \(J(\Theta)\). If my changes in \(\Theta\) (X axis of the left plot) are too abrupt, then, even if I go in the correct direction of the gradient (towards a valley), I can anyway overshoot (as seen by the red arrows in the left plot).
 - The effect is that as the training cummulates more and more iterations, we don't necessarily approach to a smaller \(J(\Theta)\) (as seen in the right plot).
 - A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine \(\Theta\) with each iteration, so we can see whether it converges or not.
-  #+attr_html: :width 600px
-  [[file:figs/learning_rate_a.png]]
+  #+attr_html: :style width: min(600px,100%);
+  [[file:week2/learning_rate_a.png]]
 - Here an example with a smaller \(\alpha\). The steps are smaller, so it should take longer to to converge, but the chances of actually converging to our \(\Theta^{\star}\) without getting lost in the way, are better.
-  #+attr_html: :width 600px
-  [[file:figs/learning_rate_b.png]]
+  #+attr_html: :style width: min(600px,100%);
+  [[file:week2/learning_rate_b.png]]
 - An automatic convergence test could be "if \(J(\Theta)\) is smaller than some \(\varepsilon\), then we say that \(J\) has converged". But it is often difficult to establish the actual value of such \(\varepsilon\).
 
 - It has been demonstrated (by some ML nerds) that if \(\alpha\) is sufficiently small, then it is guaranteed that \(J(\Theta)\) *will decrease at every single iteration*. The cost of that is that the learning happens to be super slow. Here three examples that shows the feeling of what happens when we vary \(\alpha\):
   - A \(\alpha=0.1\)
   - B \(\alpha=0.01\)
   - C \(\alpha=1\)
-  #+attr_html: :width 600px
-  [[file:figs/learning_rate_diff_alpha.png]]
+  #+attr_html: :style width: min(600px,100%);
+  [[file:week2/learning_rate_diff_alpha.png]]
 ** Features and Polynomial Regression
 - Our hypothesis need not be linear (as shown below).
   \[h_{\Theta}(x) =
@@ -129,13 +126,13 @@
 
 * Computing Parameters Automatically
 :PROPERTIES:
-:header-args: :session comp_parms_auto :exports both :results output
+:header-args+: :exports both :results output
 :END:
 ** Normal Equation
 - Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).
 - For example, take this dataset
-  #+attr_html: :width 600px
-  [[file:figs/normal_fun_1.png]]
+  #+attr_html: :style width: min(600px,100%);
+  [[file:week2/normal_fun_1.png]]
 - Then by computing \(\Theta = (X^TX)^{-1}X^Ty\), we get the best \(\Theta\).
   #+begin_src octave
   X = [ 1 2104 5 1 45;
@@ -155,7 +152,7 @@
 
   #+RESULTS:
   : theta =
-  :
+  : 
   :    188.4003
   :      0.3866
   :    -56.1382
@@ -178,69 +175,82 @@
 - Ocave's ~pinv()~ is *pseudo-inverse*, which does "the right thing" even if the matrix has no inverse (???)
 * Programming Assignment
 :PROPERTIES:
-:header-args: :session prog_assignment :exports both :results output
+:header-args+: :exports both :results output
 :END:
-
 ** Octave Tutorial
+*** Basic Operations
+Not equal is ~~=~.
 #+begin_src octave
-% not equal is ~=
 1 ~= 2
-%
-% and and or are like in C. but xor is a function
+#+end_src
+#+RESULTS:
+: ans = 1
+
+Logical operations AND and OR are like in C. but xor is a function.
+#+begin_src octave
 1 && 3 || xor(7,0)
-%
-% vector/matrix assignments use spaces for elements in the
-% same row, and semicolons for going to the next row
+#+end_src
+#+RESULTS:
+: ans = 1
+
+Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row.
+#+begin_src octave
 A=[1 2;
    3 4]
 B=[100;
    200
    300]
 C=[10 20 30; 40 50 60]
-%
-% finishing the line with semicolon doesn't show it in the output.
-a = 32
-b = 43;
-%
-% show stuff on screen
-disp(a)
-%
-% auto fill a vector start:step:end (inclusive)
-D = 5:2:13
-%
-% transpose is the apostrophe
-E = (0:0.2:1)'
-%
-% Useful matrices
-F = ones(2,3)
-G = zeros(2,2)
-Hu = rand(1,4) % uniform distribution in [0,1]
-Hn = randn(1,4) % normal distribution with mu=0 std=1
-I = eye(3)
 #+end_src
-
 #+RESULTS:
 #+begin_example
-ans = 1
-ans = 1
 A =
 
    1   2
    3   4
+
 B =
 
    100
    200
    300
+
 C =
 
    10   20   30
    40   50   60
+
+#+end_example
+
+Finishing the line with semicolon doesn't show it in the output.
+#+begin_src octave
 a = 32
-32
+b = 43;
+#+end_src
+#+RESULTS:
+: a = 32
+
+Show stuff on screen.
+#+begin_src octave
+a = 37;
+disp(a)
+printf('Two decimal points: %.2f', a);
+#+end_src
+#+RESULTS:
+: 37
+: Two decimal points: 37.00
+
+Auto fill a vector ~start:step:end~ (inclusive). Transpose is the apostrophe.
+#+begin_src octave
+D = 5:2:13
+E = (0:0.2:1)'
+#+end_src
+#+RESULTS:
+#+begin_example
 D =
 
     5    7    9   11   13
+
 E =
 
         0
@@ -249,42 +259,219 @@ E =
    0.6000
    0.8000
    1.0000
-F =
 
-   1   1   1
-   1   1   1
-G =
-
-   0   0
-   0   0
-Hu =
-
-   0.603433   0.404621   0.016212   0.812026
-Hn =
-
-   0.1804   0.3696   0.1758   0.3108
-I =
-
-Diagonal Matrix
-
-   1   0   0
-   0   1   0
-   0   0   1
 #+end_example
 
-
+*** Plotting Data
 #+begin_src octave :results none
-% random variable with mean=-10, and variance=10
+% random variable with mean=-10, and variance=10. and plot its histogram with 30 bins
 X = -10 + sqrt(10)*randn(1,10000);
-% plot its histogram with 50 bins
-hist(X, 50);
-% set
-%set (gca, 'looseinset', [0 0 0 0]);
-set(gcf, 'Units', 'pixels', 'Position', [0 0 800 380], 'Visible', 'off')
-print('figs/normal_plot.png', '-dpng', '-r300');
+hist(X, 30);
+% config output figure
+set(gcf, 'paperposition', [0 0 8 3], 'visible', 'off')
+print('week2/normal_plot.png', '-dpng', '-r300');
+#+end_src
+#+RESULTS:
+
+#+attr_html: :style width: min(800px,100%);
+[[file:week2/normal_plot.png]]
+
+*** Slicing Matrices
+#+begin_src octave :session slicing
+A = [11 12 13 14 15 16;
+     21 22 23 24 25 26;
+     31 32 33 34 35 36;
+     41 42 43 44 45 46]
+% get element in row 2 and column 4
+one_elem = A(2,4)
+#+end_src
+#+RESULTS:
+: A =
+:
+:    11   12   13   14   15   16
+:    21   22   23   24   25   26
+:    31   32   33   34   35   36
+:    41   42   43   44   45   46
+: one_elem = 24
+
+To select a range of elements we can use the ~m:n~ notation. You can replace ~n~ with ~end~. This allow us to extract submatrices, columns and rows.
+- ~m:n~   :: "everything from m to n" (including elements ~m~ and ~n~)
+- ~1:n~   :: "all from the beginning to n"
+- ~m:end~ :: "all from m to the end"
+- ~1:end~ :: "all from beginning to end". You can also use the shorthand ~:~
+
+Get a single element
+#+begin_src octave :session slicing
+elem = A(4,3)
+#+end_src
+#+RESULTS:
+: elem = 43
+
+Get a submatrix defining row range (from 2 to 4) and column range (from 3 to 5).
+#+begin_src octave :session slicing
+sub_matrix = A(2:4,3:5)
+#+end_src
+#+RESULTS:
+: sub_matrix =
+:
+:    23   24   25
+:    33   34   35
+:    43   44   45
+
+Get the lower right submatrix.
+#+begin_src octave :session slicing
+sub_matrix_lower_right = A(2:end,4:end)
+#+end_src
+#+RESULTS:
+: sub_matrix_lower_right =
+:
+:    24   25   26
+:    34   35   36
+:    44   45   46
+
+Get the 3rd column.
+#+begin_src octave :session slicing
+col = A(:,3)
+#+end_src
+#+RESULTS:
+: col =
+:
+:    13
+:    23
+:    33
+:    43
+
+Get the 4th row.
+#+begin_src octave :session slicing
+row = A(4,:)
+#+end_src
+#+RESULTS:
+: row =
+:
+:    41   42   43   44   45   46
+
+*** Moving Data Around
+Show current directory.
+#+begin_src octave
+pwd
+#+end_src
+#+RESULTS:
+: ans = /home/claudio/repos/machine-learning
+
+Content of current directory.
+#+begin_src octave
+ls
+#+end_src
+#+RESULTS:
+: style.css  week1  week1.html  week1.org  week2	week2.html  week2.org
+
+Content of directory ~week2/~ (in one column ~-1~).
+#+begin_src octave
+ls -1 week2
+#+end_src
+#+RESULTS:
+: featuresX.dat
+: learning_rate_a.png
+: learning_rate_b.png
+: learning_rate_diff_alpha.png
+: normal_fun_1.png
+: normal_plot.png
+
+I have a file ~week2/featuresX.dat~.
+#+begin_src bash
+cat week2/my_dataset.dat
+#+end_src
+#+RESULTS:
+: 2104 5 1 45 460
+: 1416 3 2 40 232
+: 1534 3 2 30 315
+:  852 2 1 36 178
+
+To load it in Octave, use the function ~load~.
+#+begin_src octave
+data = load('week2/my_dataset.dat')
+size(data)
+X = data(:,1:(end-1))
+Y = data(:,end)
+#+end_src
+#+RESULTS:
+#+begin_example
+data =
+
+   2104      5      1     45    460
+   1416      3      2     40    232
+   1534      3      2     30    315
+    852      2      1     36    178
+
+ans =
+
+   4   5
+
+X =
+
+   2104      5      1     45
+   1416      3      2     40
+   1534      3      2     30
+    852      2      1     36
+
+Y =
+
+   460
+   232
+   315
+   178
+
+#+end_example
+*** Show and Save Variables
+#+begin_src octave :session vars
+a = 3;
+b = [4 5 6];
+C = [1 2; 3 4];
+who
+whos
+#+end_src
+#+RESULTS:
+#+begin_example
+Variables visible from the current scope:
+
+C    a    ans  b
+Variables visible from the current scope:
+
+variables in scope: top scope
+
+  Attr   Name        Size                     Bytes  Class
+  ====   ====        ====                     =====  =====
+         C           2x2                         32  double
+         a           1x1                          8  double
+         ans         1x13                        13  char
+         b           1x3                         24  double
+
+Total is 21 elements using 77 bytes
+#+end_example
+
+Save variable to a file (in this case, the matrix ~A~ defined in the previous section)
+#+begin_src octave :session slicing
+save week2/matrixA.dat A
+#+end_src
+#+RESULTS:
+
+#+begin_src bash
+cat week2/matrixA.dat
 #+end_src
 
-#+attr_html: :width 700px
-[[file:figs/normal_plot.png]]
+#+RESULTS:
+#+begin_example
+# Created by Octave 7.3.0, Wed Jul 19 19:17:13 2023 PDT <claudio@ncc91277>
+# name: A
+# type: matrix
+# rows: 4
+# columns: 6
+ 11 12 13 14 15 16
+ 21 22 23 24 25 26
+ 31 32 33 34 35 36
+ 41 42 43 44 45 46
+
+
+#+end_example
 
 [fn:1] \(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).
