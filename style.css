@@ -54,22 +54,51 @@ table {
 
 pre {
   border-style: solid;
-  border-width: 1px 1px 1px 8px;
-  border-color: #aaa;
   border-radius: 0;
+  border-width: 1px 1px 1px 8px;
+  border-color: hsl(0 0% 70%);
+  background-color: hsl(0 0% 95%);
+  color: #888;
 }
 
 pre.src {
   margin-bottom: 0;
 }
 
+pre.src-bash {
+  border-color: hsl(210 100% 70%);
+  background-color: hsl(210 100% 95%);
+}
+pre.src-bash:before {
+  content: 'Bash';
+  color: hsl(210 80% 60%);
+}
+pre.src-octave:before {
+  color: hsl(36 80% 60%);
+}
+
+pre.src-octave {
+  border-color: hsl(36 100% 70%);
+  background-color: hsl(36 100% 95%);
+}
+
+pre.src:before, pre.example::after {
+  display: inline-block;
+  font-weight: bold;
+  background-color: unset;
+  padding: 3px;
+}
+pre.src:before {
+  margin-top: 14px;
+}
+pre.example::after {
+}
+
 pre.example {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: baseline;
   margin-top: 0;
-  background: #fff6d1;
 }
 .org-src-container + .example {
   border-top-style: none;
@@ -80,15 +109,14 @@ pre.example {
   padding: 0;
   margin: 0;
 }
-pre.example::after {
-  display: none;
-  right: 12px;
-  padding: 3px;
-  color: #555;
-}
-pre.example:hover::after {
-  display: inline-block;
-}
+/* pre.example::after { */
+/*   display: inline-block; */
+/*   right: 12px; */
+/*   padding: 3px; */
+/*   color: #888; */
+/*   font-weight: bold; */
+/* } */
+
 #content{
   margin-inline: 2vw;
   margin: 0 auto;
