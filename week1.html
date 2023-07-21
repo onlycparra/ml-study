@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-20 Thu 03:07 -->
+<!-- 2023-07-20 Thu 21:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 1</title>
@@ -230,12 +230,52 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Machine Learning &#x2013; Week 1</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfb8124b">1. Introduction</a>
+<ul>
+<li><a href="#org6ada597">1.1. <span class="todo TODO">TODO</span> Questions</a></li>
+</ul>
+</li>
+<li><a href="#org901e9c8">2. Model and Cost Function</a>
+<ul>
+<li><a href="#org2ff97be">2.1. Vocabulary (on a supervised learning setup):</a></li>
+<li><a href="#org7bb63e7">2.2. Model representation</a></li>
+<li><a href="#org4340690">2.3. Cost/Objective Function</a>
+<ul>
+<li><a href="#orgc9ebe46">2.3.1. <span class="done DONE">DONE</span> Questions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6f5660b">3. Parameter Learning</a>
+<ul>
+<li><a href="#orgfbf881d">3.1. Gradient Descent</a></li>
+</ul>
+</li>
+<li><a href="#orga92e2d5">4. Linear Algebra Review</a>
+<ul>
+<li><a href="#orge13dca2">4.1. Matrix-Vector and Matrix-Matrix Multiplitation</a></li>
+<li><a href="#org989831b">4.2. Identity</a></li>
+<li><a href="#org4b69302">4.3. Inverse and Transpose</a>
+<ul>
+<li><a href="#org2377021">4.3.1. Inverse</a></li>
+<li><a href="#orgbdacf21">4.3.2. Transpose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <p>
 <a href="week1.html">.</a> <a href="week2.html">Week 2</a>
 </p>
 
-<div id="outline-container-org114a6cd" class="outline-2">
-<h2 id="org114a6cd"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgfb8124b" class="outline-2">
+<h2 id="orgfb8124b"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Supervised: you give the right answer to the machine, so it can learn from it.
@@ -246,8 +286,8 @@
 <li>Unsupervised: the machine is asked to find structure within the given data.</li>
 </ul>
 </div>
-<div id="outline-container-org0dd0146" class="outline-3">
-<h3 id="org0dd0146"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
+<div id="outline-container-org6ada597" class="outline-3">
+<h3 id="org6ada597"><span class="section-number-3">1.1.</span> <span class="todo TODO">TODO</span> Questions</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> classification seems to be a discretization of regression.
@@ -262,12 +302,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb20e82" class="outline-2">
-<h2 id="orgbb20e82"><span class="section-number-2">2.</span> Model and Cost Function</h2>
+<div id="outline-container-org901e9c8" class="outline-2">
+<h2 id="org901e9c8"><span class="section-number-2">2.</span> Model and Cost Function</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org7da7e0d" class="outline-3">
-<h3 id="org7da7e0d"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
+<div id="outline-container-org2ff97be" class="outline-3">
+<h3 id="org2ff97be"><span class="section-number-3">2.1.</span> Vocabulary (on a supervised learning setup):</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><b>Dataset</b>: set of data points.</li>
@@ -283,8 +323,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org70361d5" class="outline-3">
-<h3 id="org70361d5"><span class="section-number-3">2.2.</span> Model representation</h3>
+<div id="outline-container-org7bb63e7" class="outline-3">
+<h3 id="org7bb63e7"><span class="section-number-3">2.2.</span> Model representation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The function \(h\) has the following shape:
@@ -301,15 +341,15 @@ h_{\Theta}(x) &= \Theta_0 + \Theta_1x_1 + \Theta_2x_2 \cdots \Theta_{n-1}x_{n-1}
 Where \(x_j\) is the j-th feature of a given data point. The idea is that for a new, unseen \(x'\), \(h_{\Theta}(x') \approx f(x')\) where \(f\) is the actual underlying function producing the dataset.
 </p>
 
-<div id="orgae0152a" class="figure">
+<div id="orga23eecb" class="figure">
 <p><img src="week1/ml-diagram.png" alt="ml-diagram.png" style="width: min(250px,100%);" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org53f5693" class="outline-3">
-<h3 id="org53f5693"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
+<div id="outline-container-org4340690" class="outline-3">
+<h3 id="org4340690"><span class="section-number-3">2.3.</span> Cost/Objective Function</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>By convension denoted by \(J\).</li>
@@ -321,8 +361,8 @@ Where \(m\) is the number of training examples in the training set.</li>
 <li><b>Do not confuse</b> \(h_\Theta(x)\) (the predictor), with \(J(\Theta)\) (the &ldquo;how good the predictor is&rdquo;)</li>
 </ul>
 </div>
-<div id="outline-container-orgb8a2839" class="outline-4">
-<h4 id="orgb8a2839"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
+<div id="outline-container-orgc9ebe46" class="outline-4">
+<h4 id="orgc9ebe46"><span class="section-number-4">2.3.1.</span> <span class="done DONE">DONE</span> Questions</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> I get the \(\frac{1}{m}\) part of the cost function: we want an average <i>squared-difference</i> but why are we didiving by \(2\)? Wouldn&rsquo;t it make more sense to compute the square root?
@@ -335,12 +375,12 @@ Where \(m\) is the number of training examples in the training set.</li>
 </div>
 </div>
 
-<div id="outline-container-orgc06d80b" class="outline-2">
-<h2 id="orgc06d80b"><span class="section-number-2">3.</span> Parameter Learning</h2>
+<div id="outline-container-org6f5660b" class="outline-2">
+<h2 id="org6f5660b"><span class="section-number-2">3.</span> Parameter Learning</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org3f13040" class="outline-3">
-<h3 id="org3f13040"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
+<div id="outline-container-orgfbf881d" class="outline-3">
+<h3 id="orgfbf881d"><span class="section-number-3">3.1.</span> Gradient Descent</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>The way to update each parameter is this
@@ -353,16 +393,16 @@ Where \(\alpha\) is the <i>learning rate</i>. and the expression at the right of
 </div>
 </div>
 </div>
-<div id="outline-container-org306fd1c" class="outline-2">
-<h2 id="org306fd1c"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
+<div id="outline-container-orga92e2d5" class="outline-2">
+<h2 id="orga92e2d5"><span class="section-number-2">4.</span> Linear Algebra Review</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b>Matrix</b>: rows \(\times\) cols. Usually in uppercase.</li>
 <li><b>Vector</b>: a single column. Usually in lowercase.</li>
 </ul>
 </div>
-<div id="outline-container-orgfc4a50b" class="outline-3">
-<h3 id="orgfc4a50b"><span class="section-number-3">4.1.</span> Matrix-Vector and Matrix-Matrix Multiplitation</h3>
+<div id="outline-container-orge13dca2" class="outline-3">
+<h3 id="orge13dca2"><span class="section-number-3">4.1.</span> Matrix-Vector and Matrix-Matrix Multiplitation</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>I find it easier to see the multiplication operation through the following layout, where whe two inner sizes (A.width and B.height) are matched in the top left square (magenta), and the result of the multiplication naturally falls in the lower right of the arrange.</li>
@@ -371,7 +411,7 @@ Where \(\alpha\) is the <i>learning rate</i>. and the expression at the right of
 To compute a given element \(C_{ij}\), one must dot-product the row \(i\) of the first matrix, and the column \(j\) of the second matrix, which again, looks very natural.
 </p>
 
-<div id="org01ef5c2" class="figure">
+<div id="org1b48c14" class="figure">
 <p><img src="week1/mat-mult-1.png" alt="mat-mult-1.png" style="width: min(350px,100%);" />
 </p>
 </div></li>
@@ -382,7 +422,7 @@ To compute a given element \(C_{ij}\), one must dot-product the row \(i\) of the
 The only thing to take care of, is to match the width of the intermediate result with the height of the new operand. For example, the width of \(A \times B\), with \(C\).
 </p>
 
-<div id="orgc06ef00" class="figure">
+<div id="org07c8ac9" class="figure">
 <p><img src="week1/mat-mult-2.png" alt="mat-mult-2.png" style="width: min(800px,100%);" />
 </p>
 </div></li>
@@ -394,8 +434,8 @@ The only thing to take care of, is to match the width of the intermediate result
 </div>
 </div>
 
-<div id="outline-container-org09aabc4" class="outline-3">
-<h3 id="org09aabc4"><span class="section-number-3">4.2.</span> Identity</h3>
+<div id="outline-container-org989831b" class="outline-3">
+<h3 id="org989831b"><span class="section-number-3">4.2.</span> Identity</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>\(I \times A = A\times I = A\)
@@ -406,12 +446,12 @@ The only thing to take care of, is to match the width of the intermediate result
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5dfc54" class="outline-3">
-<h3 id="orgf5dfc54"><span class="section-number-3">4.3.</span> Inverse and Transpose</h3>
+<div id="outline-container-org4b69302" class="outline-3">
+<h3 id="org4b69302"><span class="section-number-3">4.3.</span> Inverse and Transpose</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org541b61e" class="outline-4">
-<h4 id="org541b61e"><span class="section-number-4">4.3.1.</span> Inverse</h4>
+<div id="outline-container-org2377021" class="outline-4">
+<h4 id="org2377021"><span class="section-number-4">4.3.1.</span> Inverse</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <ul class="org-ul">
 <li><p>
@@ -430,7 +470,7 @@ If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
   <span style="color: #96A7A9; font-style: italic;">% This is the precise answer.</span>
 </pre>
 </div>
-<pre class="example" id="org18ac917">
+<pre class="example" id="org71b5187">
   A =
 
       3    4
@@ -457,8 +497,8 @@ If \(A\) is a square matrix of size \(m \times m\), and it has an inverse, then
 </ul>
 </div>
 </div>
-<div id="outline-container-org97ae9fe" class="outline-4">
-<h4 id="org97ae9fe"><span class="section-number-4">4.3.2.</span> Transpose</h4>
+<div id="outline-container-orgbdacf21" class="outline-4">
+<h4 id="orgbdacf21"><span class="section-number-4">4.3.2.</span> Transpose</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <ul class="org-ul">
 <li>The transpose of a matrix \(A\) is denoted by \(A^{T}\).</li>
@@ -470,7 +510,7 @@ In octave, it is experssed with a single quotation mark <code>'</code>
   At <span style="color: #d33682; font-style: italic;">=</span> A<span style="color: #d33682; font-style: italic;">'</span>
 </pre>
 </div>
-<pre class="example" id="org0448aa4">
+<pre class="example" id="org39c4f77">
   A =
 
      1   2   3   4
@@ -490,7 +530,7 @@ In octave, it is experssed with a single quotation mark <code>'</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-20 Thu 03:07</p>
+<p class="date">Created: 2023-07-20 Thu 21:26</p>
 </div>
 </body>
 </html>

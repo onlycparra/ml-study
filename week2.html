@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-20 Thu 16:43 -->
+<!-- 2023-07-20 Thu 21:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 2</title>
@@ -230,16 +230,71 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Machine Learning &#x2013; Week 2</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge41b7bf">1. Multivariate Linear Regression</a>
+<ul>
+<li><a href="#orga978995">1.1. Notation for Multiple Features</a></li>
+<li><a href="#orgcd8352f">1.2. Gradient Descent (GD) for Multiple Variables</a></li>
+<li><a href="#org3910640">1.3. GD: Feature Scaling and Normalization</a>
+<ul>
+<li><a href="#orgff04897">1.3.1. Feature Scaling</a></li>
+<li><a href="#orgd7fac72">1.3.2. Mean Normalization</a></li>
+<li><a href="#org3e6b551">1.3.3. Both together</a></li>
+</ul>
+</li>
+<li><a href="#orgcc74ee4">1.4. GD: Learning Rate \(\alpha\)</a></li>
+<li><a href="#org5b70b47">1.5. Features and Polynomial Regression</a></li>
+</ul>
+</li>
+<li><a href="#org9b402aa">2. Computing Parameters Automatically</a>
+<ul>
+<li><a href="#org8a8a7cd">2.1. Normal Equation</a></li>
+<li><a href="#org31dc4a4">2.2. Gradient Descent vs Normal Equation</a></li>
+<li><a href="#org7841138">2.3. Non-invertible matrix</a></li>
+</ul>
+</li>
+<li><a href="#orgfd53f23">3. Octave Tutorial</a>
+<ul>
+<li><a href="#org99f7af7">3.1. Basic Operations</a></li>
+<li><a href="#org9b1744f">3.2. Scalar and Element-wise Operations</a></li>
+<li><a href="#orgd625a01">3.3. Matrix Operations</a></li>
+<li><a href="#org08318f1">3.4. Indexing and Slicing Matrices</a></li>
+<li><a href="#orgb9b3c25">3.5. Moving Data Around</a></li>
+<li><a href="#org2ebf7b4">3.6. Show Variables and Save them to Files</a></li>
+<li><a href="#org3e0c295">3.7. Computing Data</a></li>
+<li><a href="#orgf606ea0">3.8. Plotting Data</a></li>
+<li><a href="#org8dd5d08">3.9. Control Statements</a>
+<ul>
+<li><a href="#org137c896">3.9.1. Loops and Conditionals</a></li>
+<li><a href="#orga09f35c">3.9.2. Functions</a></li>
+</ul>
+</li>
+<li><a href="#org474e0eb">3.10. Vectorization</a></li>
+</ul>
+</li>
+<li><a href="#orgcac396b">4. Programming Assignment</a>
+<ul>
+<li><a href="#orgf2d93ca">4.1. Warm-up Exercise: A Simple Octave Function</a></li>
+<li><a href="#orgfe183b1">4.2. Linear regression with one variable</a></li>
+<li><a href="#org89e9b24">4.3. Linear regression with multiple variables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <p>
 <a href="week1.html">Week 1</a> <a href="week3.html">Week 3</a>
 </p>
 
-<div id="outline-container-org91a25a9" class="outline-2">
-<h2 id="org91a25a9"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
+<div id="outline-container-orge41b7bf" class="outline-2">
+<h2 id="orge41b7bf"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org6994280" class="outline-3">
-<h3 id="org6994280"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
+<div id="outline-container-orga978995" class="outline-3">
+<h3 id="orga978995"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
@@ -340,8 +395,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-orge189ef4" class="outline-3">
-<h3 id="orge189ef4"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
+<div id="outline-container-orgcd8352f" class="outline-3">
+<h3 id="orgcd8352f"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>The idea is the same as with less variables. Given that the Cost function is \(\Theta^{T}x^{(i)}\), where \(x^{(i)}\) is the \(i\)-th training example, and \(x^{(i)}_{0} = 1\), to match \(\Theta_0\), then all the derivatives to update all the \(\Theta_{j}\) are easy to compute:
@@ -364,12 +419,12 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org0d550f3" class="outline-3">
-<h3 id="org0d550f3"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
+<div id="outline-container-org3910640" class="outline-3">
+<h3 id="org3910640"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org3145422" class="outline-4">
-<h4 id="org3145422"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
+<div id="outline-container-orgff04897" class="outline-4">
+<h4 id="orgff04897"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>Make sure the values of different features take values that range in similar values, this makes GD converge quickly. (this makes me thing on the disproportioned representation of skin surface in the brain, hands and face are huge, legs and backs are tiny.)</li>
@@ -378,8 +433,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org6df9d17" class="outline-4">
-<h4 id="org6df9d17"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
+<div id="outline-container-orgd7fac72" class="outline-4">
+<h4 id="orgd7fac72"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
 <li>Making the values gravitate around 0, by replacing \(x_j\) with \(x_j - \mu_j\)</li>
@@ -387,8 +442,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org52ffa2b" class="outline-4">
-<h4 id="org52ffa2b"><span class="section-number-4">1.3.3.</span> Both together</h4>
+<div id="outline-container-org3e6b551" class="outline-4">
+<h4 id="org3e6b551"><span class="section-number-4">1.3.3.</span> Both together</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <ul class="org-ul">
 <li>The vid. talks about the denominator being either the range of values \((\text{max}(x_j)-\text{min}(x_j))\) or std deviation. Doing this you end up with values roughly between \([-0.5,0.5]\).
@@ -401,11 +456,11 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </div>
 </div>
 
-<div id="outline-container-org3d0888d" class="outline-3">
-<h3 id="org3d0888d"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
+<div id="outline-container-orgcc74ee4" class="outline-3">
+<h3 id="orgcc74ee4"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
-<li>The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it.</li>
+<li>The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it. Note that \(J(\Theta^{\star})\) is not necesarily \(0\), that would be cool, but in many cases it is not feasible.</li>
 <li>Supposedly, the more iterations of learning we accumulate (X axis in the right plot) we get smaller and smaller \(J(\Theta)\), which is the discrepancy between \(h_{\Theta}(x)\) and \(y\). In other words, we should be getting closer and closer to our \(\Theta^{\star}\).</li>
 <li>Then, the point of \(\alpha\) is to determine how quickly we go in the direction of the gradient of \(J(\Theta)\). If my changes in \(\Theta\) (X axis of the left plot) are too abrupt, then, even if I go in the correct direction of the gradient (towards a valley), I can anyway overshoot (as seen by the red arrows in the left plot).</li>
 <li>The effect is that as the training cummulates more and more iterations, we don&rsquo;t necessarily approach to a smaller \(J(\Theta)\) (as seen in the right plot).</li>
@@ -413,7 +468,7 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine \(\Theta\) with each iteration, so we can see whether it converges or not.
 </p>
 
-<div id="org96fb4fc" class="figure">
+<div id="org938310c" class="figure">
 <p><img src="week2/learning_rate_a.png" alt="learning_rate_a.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -421,7 +476,7 @@ A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine
 Here an example with a smaller \(\alpha\). The steps are smaller, so it should take longer to to converge, but the chances of actually converging to our \(\Theta^{\star}\) without getting lost in the way, are better.
 </p>
 
-<div id="orgf32c451" class="figure">
+<div id="orgce6a4b9" class="figure">
 <p><img src="week2/learning_rate_b.png" alt="learning_rate_b.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -436,15 +491,16 @@ It has been demonstrated (by some ML nerds) that if \(\alpha\) is sufficiently s
 <li>C \(\alpha=1\)</li>
 </ul>
 
-<div id="org261bee2" class="figure">
+<div id="orgf39a689" class="figure">
 <p><img src="week2/learning_rate_diff_alpha.png" alt="learning_rate_diff_alpha.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org77cf593" class="outline-3">
-<h3 id="org77cf593"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
+
+<div id="outline-container-org5b70b47" class="outline-3">
+<h3 id="org5b70b47"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Our hypothesis need not be linear (as shown below).
@@ -476,12 +532,12 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 </div>
 </div>
 
-<div id="outline-container-org5831bc9" class="outline-2">
-<h2 id="org5831bc9"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
+<div id="outline-container-org9b402aa" class="outline-2">
+<h2 id="org9b402aa"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org569e7e6" class="outline-3">
-<h3 id="org569e7e6"><span class="section-number-3">2.1.</span> Normal Equation</h3>
+<div id="outline-container-org8a8a7cd" class="outline-3">
+<h3 id="org8a8a7cd"><span class="section-number-3">2.1.</span> Normal Equation</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).</li>
@@ -489,7 +545,7 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 For example, take this dataset
 </p>
 
-<div id="orgfb94c14" class="figure">
+<div id="orga5462ce" class="figure">
 <p><img src="week2/normal_fun_1.png" alt="normal_fun_1.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -527,8 +583,8 @@ ans = 460.00
 </div>
 </div>
 
-<div id="outline-container-org112f1c6" class="outline-3">
-<h3 id="org112f1c6"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
+<div id="outline-container-org31dc4a4" class="outline-3">
+<h3 id="org31dc4a4"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
 <div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -567,8 +623,8 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </p>
 </div>
 </div>
-<div id="outline-container-orgc1b4e19" class="outline-3">
-<h3 id="orgc1b4e19"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
+<div id="outline-container-org7841138" class="outline-3">
+<h3 id="org7841138"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Some matrices are not invertible
@@ -581,12 +637,12 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </div>
 </div>
 </div>
-<div id="outline-container-org3ee1bfe" class="outline-2">
-<h2 id="org3ee1bfe"><span class="section-number-2">3.</span> Octave Tutorial</h2>
+<div id="outline-container-orgfd53f23" class="outline-2">
+<h2 id="orgfd53f23"><span class="section-number-2">3.</span> Octave Tutorial</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org53a6d1a" class="outline-3">
-<h3 id="org53a6d1a"><span class="section-number-3">3.1.</span> Basic Operations</h3>
+<div id="outline-container-org99f7af7" class="outline-3">
+<h3 id="org99f7af7"><span class="section-number-3">3.1.</span> Basic Operations</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Not equal is <code>~=</code>.
@@ -627,7 +683,7 @@ A_rows <span style="color: #d33682; font-style: italic;">=</span> size(A<span st
 A_transp <span style="color: #d33682; font-style: italic;">=</span> A<span style="color: #d33682; font-style: italic;">'</span>
 </pre>
 </div>
-<pre class="example" id="orgccc9ec7">
+<pre class="example" id="orga3d58d4">
 row_vec =
 
    1   2   3   4
@@ -709,8 +765,8 @@ D =
 </div>
 </div>
 
-<div id="outline-container-orge213211" class="outline-3">
-<h3 id="orge213211"><span class="section-number-3">3.2.</span> Scalar and Element-wise Operations</h3>
+<div id="outline-container-org9b1744f" class="outline-3">
+<h3 id="org9b1744f"><span class="section-number-3">3.2.</span> Scalar and Element-wise Operations</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize matrix A and B, and scalar s</span>
@@ -727,7 +783,7 @@ A_div_s <span style="color: #d33682; font-style: italic;">=</span> A <span style
 A_plus_s <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">+</span> s
 </pre>
 </div>
-<pre class="example" id="org1a3809d">
+<pre class="example" id="orgc2849bd">
 A =
 
    1   2   4
@@ -773,8 +829,8 @@ A_plus_s =
 </div>
 </div>
 
-<div id="outline-container-orgd22b06f" class="outline-3">
-<h3 id="orgd22b06f"><span class="section-number-3">3.3.</span> Matrix Operations</h3>
+<div id="outline-container-orgd625a01" class="outline-3">
+<h3 id="orgd625a01"><span class="section-number-3">3.3.</span> Matrix Operations</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
 <pre class="src src-octave">A
@@ -786,7 +842,7 @@ C <span style="color: #d33682; font-style: italic;">=</span> [<span style="color
 [C_row_geq_5<span style="color: #d33682; font-style: italic;">,</span>C_col_geq_5] <span style="color: #d33682; font-style: italic;">=</span> find(C <span style="color: #d33682; font-style: italic;">&gt;=</span> <span style="color: #6c71c4; font-weight: bold;">5</span>) <span style="color: #96A7A9; font-style: italic;">% indices (row and col) of all elements that are at least 5</span>
 </pre>
 </div>
-<pre class="example" id="orgf53c6f0">
+<pre class="example" id="orgc2f5b33">
 A =
 
    1   2   4
@@ -832,8 +888,8 @@ row_wise_sum =
 </div>
 </div>
 
-<div id="outline-container-orgbdfc55b" class="outline-3">
-<h3 id="orgbdfc55b"><span class="section-number-3">3.4.</span> Indexing and Slicing Matrices</h3>
+<div id="outline-container-org08318f1" class="outline-3">
+<h3 id="org08318f1"><span class="section-number-3">3.4.</span> Indexing and Slicing Matrices</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-octave">A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">11</span> <span style="color: #6c71c4; font-weight: bold;">12</span> <span style="color: #6c71c4; font-weight: bold;">13</span> <span style="color: #6c71c4; font-weight: bold;">14</span> <span style="color: #6c71c4; font-weight: bold;">15</span> <span style="color: #6c71c4; font-weight: bold;">16</span><span style="color: #d33682; font-style: italic;">;</span>
@@ -957,7 +1013,7 @@ Put all elements of a <b>matrix</b> as a single <b>array</b> with the special no
 corners(<span style="color: #d33682; font-style: italic;">:,:</span>) <span style="color: #96A7A9; font-style: italic;">% this simply selects everything in the matrix preserving its shape</span>
 </pre>
 </div>
-<pre class="example" id="orgd14f94e">
+<pre class="example" id="orgb6c22b4">
 ans =
 
    11
@@ -972,8 +1028,8 @@ ans =
 </div>
 </div>
 
-<div id="outline-container-orgc28d0d2" class="outline-3">
-<h3 id="orgc28d0d2"><span class="section-number-3">3.5.</span> Moving Data Around</h3>
+<div id="outline-container-orgb9b3c25" class="outline-3">
+<h3 id="orgb9b3c25"><span class="section-number-3">3.5.</span> Moving Data Around</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Pasting matrices together
@@ -985,7 +1041,7 @@ Two <span style="color: #d33682; font-style: italic;">=</span> <span style="colo
 [One<span style="color: #d33682; font-style: italic;">;</span> Two]
 </pre>
 </div>
-<pre class="example" id="org27c8d72">
+<pre class="example" id="orgf17b26c">
 One =
 
    1   1
@@ -1053,7 +1109,7 @@ X <span style="color: #d33682; font-style: italic;">=</span> [  ones(size(data<s
 y <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span>end)
 </pre>
 </div>
-<pre class="example" id="orgcf63a95">
+<pre class="example" id="org89b66fc">
 data =
 
    2104      5      1     45    460
@@ -1079,8 +1135,8 @@ y =
 </div>
 </div>
 
-<div id="outline-container-org5892c2b" class="outline-3">
-<h3 id="org5892c2b"><span class="section-number-3">3.6.</span> Show Variables and Save them to Files</h3>
+<div id="outline-container-org2ebf7b4" class="outline-3">
+<h3 id="org2ebf7b4"><span class="section-number-3">3.6.</span> Show Variables and Save them to Files</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 To check the defined variables, use the command <code>who</code> or <code>whos</code> (for detailed view)
@@ -1093,7 +1149,7 @@ who
 whos
 </pre>
 </div>
-<pre class="example" id="org3f8a086">
+<pre class="example" id="org440c46e">
 Variables visible from the current scope:
 
 C    a    ans  b
@@ -1130,7 +1186,7 @@ Now, if in bash (not Octave) we check the files
 hexdump -C my_vars.bin
 </pre>
 </div>
-<pre class="example" id="org7a6cbe1">
+<pre class="example" id="org42f8e58">
 -rw-r--r--. 1 claudio claudio 213 Jul 20 03:07 my_vars.bin
 -rw-r--r--. 1 claudio claudio 233 Jul 20 03:07 my_vars.txt
 &gt;&gt;&gt;&gt; ASCII file:
@@ -1173,8 +1229,8 @@ hexdump -C my_vars.bin
 </div>
 </div>
 
-<div id="outline-container-org7efae4b" class="outline-3">
-<h3 id="org7efae4b"><span class="section-number-3">3.7.</span> Computing Data</h3>
+<div id="outline-container-org3e0c295" class="outline-3">
+<h3 id="org3e0c295"><span class="section-number-3">3.7.</span> Computing Data</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 Adding up rows and columns
@@ -1188,7 +1244,7 @@ col_wise_sum_A <span style="color: #d33682; font-style: italic;">=</span> sum(A<
 row_wise_sum_C <span style="color: #d33682; font-style: italic;">=</span> sum(C<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">2</span>)  <span style="color: #96A7A9; font-style: italic;">% adds up all elements of each row</span>
 </pre>
 </div>
-<pre class="example" id="orgdc8c054">
+<pre class="example" id="org806cb62">
 A =
 
    1   2   4   5
@@ -1219,7 +1275,7 @@ Flip matrix upside down
 upside_down_D <span style="color: #d33682; font-style: italic;">=</span> flipud(D)
 </pre>
 </div>
-<pre class="example" id="org5a6cac6">
+<pre class="example" id="orgaa4cd5e">
 D =
 
    1   2   3
@@ -1240,7 +1296,7 @@ Pseudo-inverse
 pseudo_inverse <span style="color: #d33682; font-style: italic;">=</span> pinv(X)
 </pre>
 </div>
-<pre class="example" id="org1e1eb83">
+<pre class="example" id="org521b4cb">
 X =
 
    1   2   3
@@ -1255,8 +1311,8 @@ pseudo_inverse =
 </div>
 </div>
 
-<div id="outline-container-orgdf87385" class="outline-3">
-<h3 id="orgdf87385"><span class="section-number-3">3.8.</span> Plotting Data</h3>
+<div id="outline-container-orgf606ea0" class="outline-3">
+<h3 id="orgf606ea0"><span class="section-number-3">3.8.</span> Plotting Data</h3>
 <div class="outline-text-3" id="text-3-8">
 <div class="org-src-container">
 <pre class="src src-octave">X <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #d33682; font-style: italic;">+</span> sqrt(<span style="color: #6c71c4; font-weight: bold;">10</span>)<span style="color: #d33682; font-style: italic;">*</span>randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">10000</span>)<span style="color: #d33682; font-style: italic;">;</span> <span style="color: #96A7A9; font-style: italic;">% random variable with mean=-10, and variance=10.</span>
@@ -1268,7 +1324,7 @@ print(<span style="color: #2aa198;">'normal_plot.png'</span><span style="color: 
 </pre>
 </div>
 
-<div id="org1a71990" class="figure">
+<div id="org0a9eee7" class="figure">
 <p><img src="week2/normal_plot.png" alt="normal_plot.png" style="width: min(800px,100%);" />
 </p>
 </div>
@@ -1285,7 +1341,7 @@ print(<span style="color: #2aa198;">'plot_sin.png'</span><span style="color: #d3
 </pre>
 </div>
 
-<div id="org5e2ae25" class="figure">
+<div id="org9ad428b" class="figure">
 <p><img src="week2/plot_sin.png" alt="plot_sin.png" style="width: min(800px,100%);" />
 </p>
 </div>
@@ -1304,19 +1360,19 @@ print(<span style="color: #2aa198;">'map_wave.png'</span><span style="color: #d3
 </pre>
 </div>
 
-<div id="org639ee3a" class="figure">
+<div id="orgbb4e31b" class="figure">
 <p><img src="week2/map_wave.png" alt="map_wave.png" style="width: min(800px,100%);" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5027b68" class="outline-3">
-<h3 id="org5027b68"><span class="section-number-3">3.9.</span> Control Statements</h3>
+<div id="outline-container-org8dd5d08" class="outline-3">
+<h3 id="org8dd5d08"><span class="section-number-3">3.9.</span> Control Statements</h3>
 <div class="outline-text-3" id="text-3-9">
 </div>
-<div id="outline-container-org4d2c3ac" class="outline-4">
-<h4 id="org4d2c3ac"><span class="section-number-4">3.9.1.</span> Loops and Conditionals</h4>
+<div id="outline-container-org137c896" class="outline-4">
+<h4 id="org137c896"><span class="section-number-4">3.9.1.</span> Loops and Conditionals</h4>
 <div class="outline-text-4" id="text-3-9-1">
 <p>
 For loops
@@ -1379,8 +1435,8 @@ v =
 </div>
 </div>
 
-<div id="outline-container-org8d05cba" class="outline-4">
-<h4 id="org8d05cba"><span class="section-number-4">3.9.2.</span> Functions</h4>
+<div id="outline-container-orga09f35c" class="outline-4">
+<h4 id="orga09f35c"><span class="section-number-4">3.9.2.</span> Functions</h4>
 <div class="outline-text-4" id="text-3-9-2">
 <p>
 Functions are stored in files. The name of the file must match the name of the function that the file exports. The file can have other internal functions, but they are not available outside of the file itself.
@@ -1430,7 +1486,7 @@ Let&rsquo;s create a function <code>costFunctionJ(X, y, Theta)</code> that recei
 <span style="color: #b58900; font-style: italic;">cat</span> ./costFunctionJ.m
 </pre>
 </div>
-<pre class="example" id="org1204a38">
+<pre class="example" id="orgbb47781">
 ./costFunctionJ.m
 function J = costFunctionJ(X, y, Theta)
   %% X     : is the "design matrix" (column of ones left-attached to matrix of features)
@@ -1454,7 +1510,7 @@ Theta <span style="color: #d33682; font-style: italic;">=</span> [<span style="c
 cost <span style="color: #d33682; font-style: italic;">=</span> costFunctionJ(X<span style="color: #d33682; font-style: italic;">,</span> y<span style="color: #d33682; font-style: italic;">,</span> Theta<span style="color: #d33682; font-style: italic;">'</span>)
 </pre>
 </div>
-<pre class="example" id="org9cf204a">
+<pre class="example" id="org1c877df">
 data =
 
    2104      5      1     45    460
@@ -1470,8 +1526,8 @@ cost = 2.0401e+06
 </div>
 </div>
 
-<div id="outline-container-orgf20c6e4" class="outline-3">
-<h3 id="orgf20c6e4"><span class="section-number-3">3.10.</span> Vectorization</h3>
+<div id="outline-container-org474e0eb" class="outline-3">
+<h3 id="org474e0eb"><span class="section-number-3">3.10.</span> Vectorization</h3>
 <div class="outline-text-3" id="text-3-10">
 <p>
 Yada yada&#x2026; Use the vector and matrix primitives that Octave offers rather than traversing with your own hand-made for-loops, etc. That is much faster.
@@ -1479,18 +1535,21 @@ Yada yada&#x2026; Use the vector and matrix primitives that Octave offers rather
 </div>
 </div>
 </div>
-<div id="outline-container-org04dfe73" class="outline-2">
-<h2 id="org04dfe73"><span class="section-number-2">4.</span> Programming Assignment</h2>
+<div id="outline-container-orgcac396b" class="outline-2">
+<h2 id="orgcac396b"><span class="section-number-2">4.</span> Programming Assignment</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org1713a78" class="outline-3">
-<h3 id="org1713a78"><span class="section-number-3">4.1.</span> Simple Octave function</h3>
+<div id="outline-container-orgf2d93ca" class="outline-3">
+<h3 id="orgf2d93ca"><span class="section-number-3">4.1.</span> Warm-up Exercise: A Simple Octave Function</h3>
 <div class="outline-text-3" id="text-4-1">
+<p>
+Create a simple function that returns an identity matrix of size \(5 \times 5\).
+</p>
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> warmUpExercise.m.orig
 </pre>
 </div>
-<pre class="example" id="org824a0cf">
+<pre class="example" id="org4cd75a2">
 function A = warmUpExercise()
 %WARMUPEXERCISE Example function in octave
 %   A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix
@@ -1504,6 +1563,9 @@ A = [];
 end
 </pre>
 
+<p>
+After editing the file&#x2026;
+</p>
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> warmUpExercise.m
 </pre>
@@ -1537,21 +1599,18 @@ Diagonal Matrix
 </pre>
 </div>
 </div>
+
+<div id="outline-container-orgfe183b1" class="outline-3">
+<h3 id="orgfe183b1"><span class="section-number-3">4.2.</span> Linear regression with one variable</h3>
 </div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-\(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).
-</p></div></div>
-
-
+<div id="outline-container-org89e9b24" class="outline-3">
+<h3 id="org89e9b24"><span class="section-number-3">4.3.</span> Linear regression with multiple variables</h3>
 </div>
-</div></div>
+</div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-20 Thu 16:43</p>
+<p class="date">Created: 2023-07-20 Thu 21:04</p>
 </div>
 </body>
 </html>

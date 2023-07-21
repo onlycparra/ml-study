@@ -1,6 +1,6 @@
 #+TITLE: Machine Learning -- Week 1
 #+AUTHOR: Claudio Parra
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+PROPERTY: header-args :eval no-export
 [[file:week1.org][.]] [[file:week2.org][Week 2]]

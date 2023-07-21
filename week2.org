@@ -1,6 +1,6 @@
 #+TITLE: Machine Learning -- Week 2
 #+AUTHOR: Claudio Parra
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:t
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+PROPERTY: header-args :eval no-export
 [[file:week1.org][Week 1]] [[file:week3.org][Week 3]]
@@ -86,7 +86,7 @@
   \[x^{\text{norm.}}_j := \frac{x_j - \mu_{j}}{\text{max}(x_j) \textcolor{blue}{- \mu_{j}}}\]
 
 ** GD: Learning Rate \(\alpha\)
-- The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small [fn:1], meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it.
+- The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it. Note that \(J(\Theta^{\star})\) is not necesarily \(0\), that would be cool, but in many cases it is not feasible.
 - Supposedly, the more iterations of learning we accumulate (X axis in the right plot) we get smaller and smaller \(J(\Theta)\), which is the discrepancy between \(h_{\Theta}(x)\) and \(y\). In other words, we should be getting closer and closer to our \(\Theta^{\star}\).
 - Then, the point of \(\alpha\) is to determine how quickly we go in the direction of the gradient of \(J(\Theta)\). If my changes in \(\Theta\) (X axis of the left plot) are too abrupt, then, even if I go in the correct direction of the gradient (towards a valley), I can anyway overshoot (as seen by the red arrows in the left plot).
 - The effect is that as the training cummulates more and more iterations, we don't necessarily approach to a smaller \(J(\Theta)\) (as seen in the right plot).
@@ -104,6 +104,7 @@
   - C \(\alpha=1\)
   #+attr_html: :style width: min(600px,100%);
   [[file:week2/learning_rate_diff_alpha.png]]
+
 ** Features and Polynomial Regression
 - Our hypothesis need not be linear (as shown below).
   \[h_{\Theta}(x) =
@@ -907,7 +908,8 @@ Yada yada... Use the vector and matrix primitives that Octave offers rather than
 :PROPERTIES:
 :header-args+: :exports both :results output
 :END:
-** Simple Octave function
+** Warm-up Exercise: A Simple Octave Function
+Create a simple function that returns an identity matrix of size \(5 \times 5\).
 #+begin_src bash :session prog-assignment-bash :dir week2/assignment
 cat warmUpExercise.m.orig
 #+end_src
@@ -926,6 +928,7 @@ A = [];
 end
 #+end_example
 
+After editing the file...
 #+begin_src bash :session prog-assignment-bash :dir week2/assignment
 cat warmUpExercise.m
 #+end_src
@@ -951,4 +954,5 @@ warmUpExercise
 :    0   0   0   1   0
 :    0   0   0   0   1
 
-[fn:1] \(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).
+** Linear regression with one variable
+** Linear regression with multiple variables
