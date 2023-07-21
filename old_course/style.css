@@ -109,15 +109,19 @@ pre.example {
   padding: 0;
   margin: 0;
 }
+/* pre.example::after { */
+/*   display: inline-block; */
+/*   right: 12px; */
+/*   padding: 3px; */
+/*   color: #888; */
+/*   font-weight: bold; */
+/* } */
 
 #content{
   margin-inline: 2vw;
   margin: 0 auto;
   flex-grow: 1;
   width: min(98vw,100ch);
-}
-.outline-text-2 {
-  margin-inline: 1rem;
 }
 .outline-2, #text-table-of-contents > ul {
   background: var(--col-bg);
