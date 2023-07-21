@@ -192,43 +192,45 @@ Logical operations AND and OR are like in C. but xor is a function.
 #+RESULTS:
 : ans = 1
 
-Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row. Transposition is denoted by one simple quotation mark. The function ~size()~ returns the dimension of a matrix or vector.
+Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row. The function ~size()~ returns the dimension of a matrix or vector. Transposition is denoted by one simple quotation mark.
 #+begin_src octave
-A = [1 2;
-     3 4]
-B = [100;
-     200
-     300]
-B_size = size(B)
-C = [10 20 30; 40 50 60]
-[C_rows, C_cols] = size(C)
-C_transposed = C'
+row_vec = [1 2 3 4]
+col_vec = [1; 2; 3; 4]
+A = [10 20 30;
+     40 50 60]
+A_size = size(A)
+A_cols = size(A,1)
+A_rows = size(A,2)
+[A_rows_alt, A_cols_alt] = size(A)
+A_transp = A'
 #+end_src
 #+RESULTS:
 #+begin_example
+row_vec =
+
+   1   2   3   4
+
+col_vec =
+
+   1
+   2
+   3
+   4
+
 A =
-
-   1   2
-   3   4
-
-B =
-
-   100
-   200
-   300
-
-B_size =
-
-   3   1
-
-C =
 
    10   20   30
    40   50   60
 
-C_rows = 2
-C_cols = 3
-C_transposed =
+A_size =
+
+   2   3
+
+A_cols = 2
+A_rows = 3
+A_rows_alt = 2
+A_cols_alt = 3
+A_transp =
 
    10   40
    20   50
@@ -390,8 +392,10 @@ A = [11 12 13 14 15 16;
      21 22 23 24 25 26;
      31 32 33 34 35 36;
      41 42 43 44 45 46]
-% get element in row 2 and column 4
-one_elem = A(2,4)
+one_elem = A(2,4) % get a single element in row 2 and column 4
+one_col = A(3)    % get a column
+
+
 #+end_src
 #+RESULTS:
 : A =
@@ -401,6 +405,8 @@ one_elem = A(2,4)
 :    31   32   33   34   35   36
 :    41   42   43   44   45   46
 : one_elem = 24
+: one_col = 31
+: ans = 6
 
 To select a range of elements we can use the ~m:n~ notation. You can replace ~n~ with ~end~. This allow us to extract submatrices, columns and rows.
 - ~m:n~   :: "everything from m to n" (including elements ~m~ and ~n~)
@@ -542,9 +548,9 @@ To load that file in Octave, use the function ~load()~.
 #+begin_src octave :session move-data
 data = load('my_dataset.txt')
 size(data)
-% add a column of ones at the left. 4 == size(data)(1)
-X = [  ones(size(data)(1),1)  ,  data(:,1:(end-1))  ]
-Y = data(:,end)
+% add a column of ones at the left. 4 == size(data,1)
+X = [  ones(size(data,1),1)  ,  data(:,1:(end-1))  ]
+y = data(:,end)
 #+end_src
 #+RESULTS:
 #+begin_example
@@ -563,7 +569,7 @@ X =
       1   1416      3      2     40
       1   1534      3      2     30
       1    852      2      1     36
-Y =
+y =
 
    460
    232
@@ -761,7 +767,7 @@ y1=sin(3*pi*t); y2=cos(2.1*pi*t)-2; y3=cos(7*pi*(t-0.2))+3.13;
 map = (y1' * y2) * (eye(size(t)) * y3') .* (y1+y2);
 hold on;
 imagesc(map); colorbar; colormap('gray');
-axis([1 100 1 100])
+axis([1 100 1 100])d
 xlabel('X axis'); ylabel('Y axis'); title('Heatmap');
 % Configure and save image
 set(gca, 'box', 'on'); set(gcf, 'paperposition', [0 0 8 6], 'visible', 'off');
@@ -773,11 +779,176 @@ print('map_wave.png', '-dpng', '-r300');
 
 ** Control Statements
 *** Loops and Conditionals
+For loops
+#+begin_src octave :session loops_cond
+v = zeros(1,10)
+for i=1:7,
+  v(i) = 2^i;
+end;
+v
+idx = [1 8 9 10];
+for i=idx,
+  v(i) = 1000 + i;
+end;
+v
+#+end_src
+#+RESULTS:
+: v =
+:
+:    0   0   0   0   0   0   0   0   0   0
+: v =
+:
+:      2     4     8    16    32    64   128     0     0     0
+: v =
+:
+:    1001      4      8     16     32     64    128   1008   1009   1010
+
+While loop
+#+begin_src octave :session loops_cond
+i = 1;
+while i <= 3,
+  v(i) = 999;
+  i = i+1;
+end;
+v
+i = 1;
+while true
+  if i > 4,
+    break;
+  end;
+  disp(i);
+  i = i+1;
+end;
+#+end_src
+#+RESULTS:
+: v =
+:
+:     999    999    999     16     32     64    128   1008   1009   1010
+: 1
+: 2
+: 3
+: 4
+
 *** Functions
+Functions are stored in files. The name of the file must match the name of the function that the file exports. The file can have other internal functions, but they are not available outside of the file itself.
+#+begin_src bash :session octave-functions-bash :dir week2
+ls ./squareAndAdd.m
+cat ./squareAndAdd.m
+#+end_src
+#+RESULTS:
+: ./squareAndAdd.m
+: function ret_val = squareAndAdd(x, y)
+:   ret_val = square(x) + y;
+:
+: function sq = square(x)
+:   sq = x^2;
+
+If we are in the same directory, as the ~.m~ file, then we can just call the function in these files. We can use the octave function ~addpath('/path/to/file.m')~ to make the definitions available even if we are not in the same directory
+#+begin_src octave :session octave-functions :dir week2
+pwd
+squareAndAdd(2, 1)
+square(4) % this will fail
+#+end_src
+#+RESULTS:
+: ans = /home/claudio/repos/machine-learning/week2
+: ans = 5
+: error: 'square' undefined near line 1, column 1
+:
+: The 'square' function belongs to the signal package from Octave Forge
+: which seems to not be installed in your system.
+:
+: Please read <https://www.octave.org/missing.html> to learn how you can
+: contribute missing functionality.
+
+Let's create a function ~costFunctionJ(X, y, Theta)~ that receives the design matrix, targets, and a candidate for Theta, and returns the associated cost.
+#+begin_src bash :session octave-functions-bash :dir week2
+ls ./costFunctionJ.m
+cat ./costFunctionJ.m
+#+end_src
+#+RESULTS:
+#+begin_example
+./costFunctionJ.m
+function J = costFunctionJ(X, y, Theta)
+  %% X     : is the "design matrix" (column of ones left-attached to matrix of features)
+  %% y     : is the array of targets
+  %% Theta : the array of parameters to evaluate
+
+  m = size(X,1);               % number of training examples.
+  h = X*Theta;                 % array of hypothesis. Each hyp. is T0 + T1*x1 + T2*x2 + T3*x3...
+  sqErrors = (h-y).^2;         % squared errors.
+  J = 1/(2*m) * sum(sqErrors); % half of the average of the addition of all sqErrors.
+#+end_example
+
+Let's use the function with some \(\Theta\)
+#+begin_src octave :session octave-functions :dir week2
+data = load('my_dataset.txt')
+X = [  ones(size(data,1),1)  ,  data(:,1:(end-1))  ];
+y = data(:,end);
+Theta = [-7000 5 -100 90 0] % taken out of my ass
+cost = costFunctionJ(X, y, Theta')
+#+end_src
+#+RESULTS:
+#+begin_example
+data =
+
+   2104      5      1     45    460
+   1416      3      2     40    232
+   1534      3      2     30    315
+    852      2      1     36    178
+Theta =
+
+  -7000      5   -100     90      0
+cost = 2.0401e+06
+#+end_example
 
 ** Vectorization
-
+Yada yada... Use the vector and matrix primitives that Octave offers rather than traversing with your own hand-made for-loops, etc. That is much faster.
 * Programming Assignment
-** Submission System
+:PROPERTIES:
+:header-args+: :exports both :results output
+:END:
+** Simple Octave function
+#+begin_src bash :session prog-assignment-bash :dir week2/assignment
+cat warmUpExercise.m.orig
+#+end_src
+#+RESULTS:
+#+begin_example
+function A = warmUpExercise()
+%WARMUPEXERCISE Example function in octave
+%   A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix
+A = [];
+% ============= YOUR CODE HERE ==============
+% Instructions: Return the 5x5 identity matrix
+%               In octave, we return values by defining which variables
+%               represent the return values (at the top of the file)
+%               and then set them accordingly.
+% ===========================================
+end
+#+end_example
+
+#+begin_src bash :session prog-assignment-bash :dir week2/assignment
+cat warmUpExercise.m
+#+end_src
+#+RESULTS:
+: function A = warmUpExercise()
+:   % WARMUPEXERCISE Example function in octave
+:   % A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix
+:   A = eye(5);
+: end
+
+Run the warm-up exercise.
+#+begin_src octave :session prog-assignment :dir week2/assignment
+warmUpExercise
+#+end_src
+#+RESULTS:
+: ans =
+:
+: Diagonal Matrix
+:
+:    1   0   0   0   0
+:    0   1   0   0   0
+:    0   0   1   0   0
+:    0   0   0   1   0
+:    0   0   0   0   1
 
 [fn:1] \(J(\Theta^{\star})\) small, not necessarily the smallest. That would be to find the global minima (wich is cool, but usually unrealistic).

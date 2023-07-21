@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-20 Thu 04:45 -->
+<!-- 2023-07-20 Thu 16:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning &#x2013; Week 2</title>
@@ -234,12 +234,12 @@
 <a href="week1.html">Week 1</a> <a href="week3.html">Week 3</a>
 </p>
 
-<div id="outline-container-org690f653" class="outline-2">
-<h2 id="org690f653"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
+<div id="outline-container-org91a25a9" class="outline-2">
+<h2 id="org91a25a9"><span class="section-number-2">1.</span> Multivariate Linear Regression</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org46c53a9" class="outline-3">
-<h3 id="org46c53a9"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
+<div id="outline-container-org6994280" class="outline-3">
+<h3 id="org6994280"><span class="section-number-3">1.1.</span> Notation for Multiple Features</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><p>
@@ -340,8 +340,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org09f94af" class="outline-3">
-<h3 id="org09f94af"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
+<div id="outline-container-orge189ef4" class="outline-3">
+<h3 id="orge189ef4"><span class="section-number-3">1.2.</span> Gradient Descent (GD) for Multiple Variables</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>The idea is the same as with less variables. Given that the Cost function is \(\Theta^{T}x^{(i)}\), where \(x^{(i)}\) is the \(i\)-th training example, and \(x^{(i)}_{0} = 1\), to match \(\Theta_0\), then all the derivatives to update all the \(\Theta_{j}\) are easy to compute:
@@ -364,12 +364,12 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-orge7b7b5e" class="outline-3">
-<h3 id="orge7b7b5e"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
+<div id="outline-container-org0d550f3" class="outline-3">
+<h3 id="org0d550f3"><span class="section-number-3">1.3.</span> GD: Feature Scaling and Normalization</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org347d8c0" class="outline-4">
-<h4 id="org347d8c0"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
+<div id="outline-container-org3145422" class="outline-4">
+<h4 id="org3145422"><span class="section-number-4">1.3.1.</span> Feature Scaling</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>Make sure the values of different features take values that range in similar values, this makes GD converge quickly. (this makes me thing on the disproportioned representation of skin surface in the brain, hands and face are huge, legs and backs are tiny.)</li>
@@ -378,8 +378,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org2c027e2" class="outline-4">
-<h4 id="org2c027e2"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
+<div id="outline-container-org6df9d17" class="outline-4">
+<h4 id="org6df9d17"><span class="section-number-4">1.3.2.</span> Mean Normalization</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
 <li>Making the values gravitate around 0, by replacing \(x_j\) with \(x_j - \mu_j\)</li>
@@ -387,8 +387,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </ul>
 </div>
 </div>
-<div id="outline-container-org7a92a1e" class="outline-4">
-<h4 id="org7a92a1e"><span class="section-number-4">1.3.3.</span> Both together</h4>
+<div id="outline-container-org52ffa2b" class="outline-4">
+<h4 id="org52ffa2b"><span class="section-number-4">1.3.3.</span> Both together</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <ul class="org-ul">
 <li>The vid. talks about the denominator being either the range of values \((\text{max}(x_j)-\text{min}(x_j))\) or std deviation. Doing this you end up with values roughly between \([-0.5,0.5]\).
@@ -401,8 +401,8 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 </div>
 </div>
 
-<div id="outline-container-orgf978ff7" class="outline-3">
-<h3 id="orgf978ff7"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
+<div id="outline-container-org3d0888d" class="outline-3">
+<h3 id="org3d0888d"><span class="section-number-3">1.4.</span> GD: Learning Rate \(\alpha\)</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>The point of learning is to find a \(\Theta^{\star}\) such that \(J(\Theta^{\star})\) is small <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, meaning that the hypothesis \(h_{\Theta^{\star}}(x)\) is, in average, not doing bad for any \(x\) you throw at it.</li>
@@ -413,7 +413,7 @@ This 1 matches with the <b>bias parameter</b> \(\Theta_0\).
 A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine \(\Theta\) with each iteration, so we can see whether it converges or not.
 </p>
 
-<div id="org5a5e96f" class="figure">
+<div id="org96fb4fc" class="figure">
 <p><img src="week2/learning_rate_a.png" alt="learning_rate_a.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -421,7 +421,7 @@ A good debugging technique is to plot \(J(\Theta\) (the right plot) as we refine
 Here an example with a smaller \(\alpha\). The steps are smaller, so it should take longer to to converge, but the chances of actually converging to our \(\Theta^{\star}\) without getting lost in the way, are better.
 </p>
 
-<div id="orgb1fcfab" class="figure">
+<div id="orgf32c451" class="figure">
 <p><img src="week2/learning_rate_b.png" alt="learning_rate_b.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -436,15 +436,15 @@ It has been demonstrated (by some ML nerds) that if \(\alpha\) is sufficiently s
 <li>C \(\alpha=1\)</li>
 </ul>
 
-<div id="org001d0f9" class="figure">
+<div id="org261bee2" class="figure">
 <p><img src="week2/learning_rate_diff_alpha.png" alt="learning_rate_diff_alpha.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2746105" class="outline-3">
-<h3 id="org2746105"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
+<div id="outline-container-org77cf593" class="outline-3">
+<h3 id="org77cf593"><span class="section-number-3">1.5.</span> Features and Polynomial Regression</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Our hypothesis need not be linear (as shown below).
@@ -476,12 +476,12 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 </div>
 </div>
 
-<div id="outline-container-orgf4e9fcd" class="outline-2">
-<h2 id="orgf4e9fcd"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
+<div id="outline-container-org5831bc9" class="outline-2">
+<h2 id="org5831bc9"><span class="section-number-2">2.</span> Computing Parameters Automatically</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org1cec163" class="outline-3">
-<h3 id="org1cec163"><span class="section-number-3">2.1.</span> Normal Equation</h3>
+<div id="outline-container-org569e7e6" class="outline-3">
+<h3 id="org569e7e6"><span class="section-number-3">2.1.</span> Normal Equation</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Gradient descent is an iterative algorithm. An analytical approach is to solve for \(\Theta\).</li>
@@ -489,7 +489,7 @@ We may create a new feature <b>area</b> \(=\) frontage \(\times\) depth. And now
 For example, take this dataset
 </p>
 
-<div id="org04bd91a" class="figure">
+<div id="orgfb94c14" class="figure">
 <p><img src="week2/normal_fun_1.png" alt="normal_fun_1.png" style="width: min(600px,100%);" />
 </p>
 </div></li>
@@ -527,8 +527,8 @@ ans = 460.00
 </div>
 </div>
 
-<div id="outline-container-org108ff8e" class="outline-3">
-<h3 id="org108ff8e"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
+<div id="outline-container-org112f1c6" class="outline-3">
+<h3 id="org112f1c6"><span class="section-number-3">2.2.</span> Gradient Descent vs Normal Equation</h3>
 <div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -567,8 +567,8 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </p>
 </div>
 </div>
-<div id="outline-container-orged24c1a" class="outline-3">
-<h3 id="orged24c1a"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
+<div id="outline-container-orgc1b4e19" class="outline-3">
+<h3 id="orgc1b4e19"><span class="section-number-3">2.3.</span> Non-invertible matrix</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Some matrices are not invertible
@@ -581,12 +581,12 @@ At \(n > 1,000,000\) it is probably the only option in a reasonably modern compu
 </div>
 </div>
 </div>
-<div id="outline-container-orgee8bd37" class="outline-2">
-<h2 id="orgee8bd37"><span class="section-number-2">3.</span> Octave Tutorial</h2>
+<div id="outline-container-org3ee1bfe" class="outline-2">
+<h2 id="org3ee1bfe"><span class="section-number-2">3.</span> Octave Tutorial</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org1f72909" class="outline-3">
-<h3 id="org1f72909"><span class="section-number-3">3.1.</span> Basic Operations</h3>
+<div id="outline-container-org53a6d1a" class="outline-3">
+<h3 id="org53a6d1a"><span class="section-number-3">3.1.</span> Basic Operations</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Not equal is <code>~=</code>.
@@ -613,44 +613,46 @@ ans = 1
 
 
 <p>
-Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row. Transposition is denoted by one simple quotation mark. The function <code>size()</code> returns the dimension of a matrix or vector.
+Vector/matrix assignments use spaces for elements in the same row, and semicolons for going to the next row. The function <code>size()</code> returns the dimension of a matrix or vector. Transposition is denoted by one simple quotation mark.
 </p>
 <div class="org-src-container">
-<pre class="src src-octave">A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span>
-     <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]
-B <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">100</span><span style="color: #d33682; font-style: italic;">;</span>
-     <span style="color: #6c71c4; font-weight: bold;">200</span>
-     <span style="color: #6c71c4; font-weight: bold;">300</span>]
-B_size <span style="color: #d33682; font-style: italic;">=</span> size(B)
-C <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #6c71c4; font-weight: bold;">20</span> <span style="color: #6c71c4; font-weight: bold;">30</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">40</span> <span style="color: #6c71c4; font-weight: bold;">50</span> <span style="color: #6c71c4; font-weight: bold;">60</span>]
-[C_rows<span style="color: #d33682; font-style: italic;">,</span> C_cols] <span style="color: #d33682; font-style: italic;">=</span> size(C)
-C_transposed <span style="color: #d33682; font-style: italic;">=</span> C<span style="color: #d33682; font-style: italic;">'</span>
+<pre class="src src-octave">row_vec <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">2</span> <span style="color: #6c71c4; font-weight: bold;">3</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]
+col_vec <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">;</span> <span style="color: #6c71c4; font-weight: bold;">4</span>]
+A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #6c71c4; font-weight: bold;">20</span> <span style="color: #6c71c4; font-weight: bold;">30</span><span style="color: #d33682; font-style: italic;">;</span>
+     <span style="color: #6c71c4; font-weight: bold;">40</span> <span style="color: #6c71c4; font-weight: bold;">50</span> <span style="color: #6c71c4; font-weight: bold;">60</span>]
+A_size <span style="color: #d33682; font-style: italic;">=</span> size(A)
+A_cols <span style="color: #d33682; font-style: italic;">=</span> size(A<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)
+A_rows <span style="color: #d33682; font-style: italic;">=</span> size(A<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">2</span>)
+[A_rows_alt<span style="color: #d33682; font-style: italic;">,</span> A_cols_alt] <span style="color: #d33682; font-style: italic;">=</span> size(A)
+A_transp <span style="color: #d33682; font-style: italic;">=</span> A<span style="color: #d33682; font-style: italic;">'</span>
 </pre>
 </div>
-<pre class="example" id="orgaa01273">
+<pre class="example" id="orgccc9ec7">
+row_vec =
+
+   1   2   3   4
+
+col_vec =
+
+   1
+   2
+   3
+   4
+
 A =
-
-   1   2
-   3   4
-
-B =
-
-   100
-   200
-   300
-
-B_size =
-
-   3   1
-
-C =
 
    10   20   30
    40   50   60
 
-C_rows = 2
-C_cols = 3
-C_transposed =
+A_size =
+
+   2   3
+
+A_cols = 2
+A_rows = 3
+A_rows_alt = 2
+A_cols_alt = 3
+A_transp =
 
    10   40
    20   50
@@ -707,8 +709,8 @@ D =
 </div>
 </div>
 
-<div id="outline-container-org8498d70" class="outline-3">
-<h3 id="org8498d70"><span class="section-number-3">3.2.</span> Scalar and Element-wise Operations</h3>
+<div id="outline-container-orge213211" class="outline-3">
+<h3 id="orge213211"><span class="section-number-3">3.2.</span> Scalar and Element-wise Operations</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-octave"><span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Initialize matrix A and B, and scalar s</span>
@@ -725,7 +727,7 @@ A_div_s <span style="color: #d33682; font-style: italic;">=</span> A <span style
 A_plus_s <span style="color: #d33682; font-style: italic;">=</span> A <span style="color: #d33682; font-style: italic;">+</span> s
 </pre>
 </div>
-<pre class="example" id="orge25c1ae">
+<pre class="example" id="org1a3809d">
 A =
 
    1   2   4
@@ -771,8 +773,8 @@ A_plus_s =
 </div>
 </div>
 
-<div id="outline-container-orgc357d4a" class="outline-3">
-<h3 id="orgc357d4a"><span class="section-number-3">3.3.</span> Matrix Operations</h3>
+<div id="outline-container-orgd22b06f" class="outline-3">
+<h3 id="orgd22b06f"><span class="section-number-3">3.3.</span> Matrix Operations</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
 <pre class="src src-octave">A
@@ -784,7 +786,7 @@ C <span style="color: #d33682; font-style: italic;">=</span> [<span style="color
 [C_row_geq_5<span style="color: #d33682; font-style: italic;">,</span>C_col_geq_5] <span style="color: #d33682; font-style: italic;">=</span> find(C <span style="color: #d33682; font-style: italic;">&gt;=</span> <span style="color: #6c71c4; font-weight: bold;">5</span>) <span style="color: #96A7A9; font-style: italic;">% indices (row and col) of all elements that are at least 5</span>
 </pre>
 </div>
-<pre class="example" id="org0361136">
+<pre class="example" id="orgf53c6f0">
 A =
 
    1   2   4
@@ -830,16 +832,18 @@ row_wise_sum =
 </div>
 </div>
 
-<div id="outline-container-org0f252bc" class="outline-3">
-<h3 id="org0f252bc"><span class="section-number-3">3.4.</span> Indexing and Slicing Matrices</h3>
+<div id="outline-container-orgbdfc55b" class="outline-3">
+<h3 id="orgbdfc55b"><span class="section-number-3">3.4.</span> Indexing and Slicing Matrices</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-octave">A <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">11</span> <span style="color: #6c71c4; font-weight: bold;">12</span> <span style="color: #6c71c4; font-weight: bold;">13</span> <span style="color: #6c71c4; font-weight: bold;">14</span> <span style="color: #6c71c4; font-weight: bold;">15</span> <span style="color: #6c71c4; font-weight: bold;">16</span><span style="color: #d33682; font-style: italic;">;</span>
      <span style="color: #6c71c4; font-weight: bold;">21</span> <span style="color: #6c71c4; font-weight: bold;">22</span> <span style="color: #6c71c4; font-weight: bold;">23</span> <span style="color: #6c71c4; font-weight: bold;">24</span> <span style="color: #6c71c4; font-weight: bold;">25</span> <span style="color: #6c71c4; font-weight: bold;">26</span><span style="color: #d33682; font-style: italic;">;</span>
      <span style="color: #6c71c4; font-weight: bold;">31</span> <span style="color: #6c71c4; font-weight: bold;">32</span> <span style="color: #6c71c4; font-weight: bold;">33</span> <span style="color: #6c71c4; font-weight: bold;">34</span> <span style="color: #6c71c4; font-weight: bold;">35</span> <span style="color: #6c71c4; font-weight: bold;">36</span><span style="color: #d33682; font-style: italic;">;</span>
      <span style="color: #6c71c4; font-weight: bold;">41</span> <span style="color: #6c71c4; font-weight: bold;">42</span> <span style="color: #6c71c4; font-weight: bold;">43</span> <span style="color: #6c71c4; font-weight: bold;">44</span> <span style="color: #6c71c4; font-weight: bold;">45</span> <span style="color: #6c71c4; font-weight: bold;">46</span>]
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">get element in row 2 and column 4</span>
-one_elem <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>)
+one_elem <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% get a single element in row 2 and column 4</span>
+one_col <span style="color: #d33682; font-style: italic;">=</span> A(<span style="color: #6c71c4; font-weight: bold;">3</span>)    <span style="color: #96A7A9; font-style: italic;">% get a column</span>
+
+
 </pre>
 </div>
 <pre class="example">
@@ -850,6 +854,8 @@ A =
    31   32   33   34   35   36
    41   42   43   44   45   46
 one_elem = 24
+one_col = 31
+ans = 6
 </pre>
 
 
@@ -951,7 +957,7 @@ Put all elements of a <b>matrix</b> as a single <b>array</b> with the special no
 corners(<span style="color: #d33682; font-style: italic;">:,:</span>) <span style="color: #96A7A9; font-style: italic;">% this simply selects everything in the matrix preserving its shape</span>
 </pre>
 </div>
-<pre class="example" id="org37c6974">
+<pre class="example" id="orgd14f94e">
 ans =
 
    11
@@ -966,8 +972,8 @@ ans =
 </div>
 </div>
 
-<div id="outline-container-orga2ec7dc" class="outline-3">
-<h3 id="orga2ec7dc"><span class="section-number-3">3.5.</span> Moving Data Around</h3>
+<div id="outline-container-orgc28d0d2" class="outline-3">
+<h3 id="orgc28d0d2"><span class="section-number-3">3.5.</span> Moving Data Around</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Pasting matrices together
@@ -979,7 +985,7 @@ Two <span style="color: #d33682; font-style: italic;">=</span> <span style="colo
 [One<span style="color: #d33682; font-style: italic;">;</span> Two]
 </pre>
 </div>
-<pre class="example" id="orge782777">
+<pre class="example" id="org27c8d72">
 One =
 
    1   1
@@ -1042,12 +1048,12 @@ To load that file in Octave, use the function <code>load()</code>.
 <div class="org-src-container">
 <pre class="src src-octave">data <span style="color: #d33682; font-style: italic;">=</span> load(<span style="color: #2aa198;">'my_dataset.txt'</span>)
 size(data)
-<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">add a column of ones at the left. 4 == size(data)(1)</span>
-X <span style="color: #d33682; font-style: italic;">=</span> [  ones(size(data)(<span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)  <span style="color: #d33682; font-style: italic;">,</span>  data(<span style="color: #d33682; font-style: italic;">:,</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">:</span>(end<span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">1</span>))  ]
-Y <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span>end)
+<span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">add a column of ones at the left. 4 == size(data,1)</span>
+X <span style="color: #d33682; font-style: italic;">=</span> [  ones(size(data<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)  <span style="color: #d33682; font-style: italic;">,</span>  data(<span style="color: #d33682; font-style: italic;">:,</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">:</span>(end<span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">1</span>))  ]
+y <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span>end)
 </pre>
 </div>
-<pre class="example" id="org1813665">
+<pre class="example" id="orgcf63a95">
 data =
 
    2104      5      1     45    460
@@ -1063,7 +1069,7 @@ X =
       1   1416      3      2     40
       1   1534      3      2     30
       1    852      2      1     36
-Y =
+y =
 
    460
    232
@@ -1073,8 +1079,8 @@ Y =
 </div>
 </div>
 
-<div id="outline-container-org723f2b4" class="outline-3">
-<h3 id="org723f2b4"><span class="section-number-3">3.6.</span> Show Variables and Save them to Files</h3>
+<div id="outline-container-org5892c2b" class="outline-3">
+<h3 id="org5892c2b"><span class="section-number-3">3.6.</span> Show Variables and Save them to Files</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 To check the defined variables, use the command <code>who</code> or <code>whos</code> (for detailed view)
@@ -1087,7 +1093,7 @@ who
 whos
 </pre>
 </div>
-<pre class="example" id="orgd0db5ca">
+<pre class="example" id="org3f8a086">
 Variables visible from the current scope:
 
 C    a    ans  b
@@ -1124,7 +1130,7 @@ Now, if in bash (not Octave) we check the files
 hexdump -C my_vars.bin
 </pre>
 </div>
-<pre class="example" id="org55f5843">
+<pre class="example" id="org7a6cbe1">
 -rw-r--r--. 1 claudio claudio 213 Jul 20 03:07 my_vars.bin
 -rw-r--r--. 1 claudio claudio 233 Jul 20 03:07 my_vars.txt
 &gt;&gt;&gt;&gt; ASCII file:
@@ -1167,8 +1173,8 @@ hexdump -C my_vars.bin
 </div>
 </div>
 
-<div id="outline-container-org0d208b1" class="outline-3">
-<h3 id="org0d208b1"><span class="section-number-3">3.7.</span> Computing Data</h3>
+<div id="outline-container-org7efae4b" class="outline-3">
+<h3 id="org7efae4b"><span class="section-number-3">3.7.</span> Computing Data</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 Adding up rows and columns
@@ -1182,7 +1188,7 @@ col_wise_sum_A <span style="color: #d33682; font-style: italic;">=</span> sum(A<
 row_wise_sum_C <span style="color: #d33682; font-style: italic;">=</span> sum(C<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">2</span>)  <span style="color: #96A7A9; font-style: italic;">% adds up all elements of each row</span>
 </pre>
 </div>
-<pre class="example" id="org50bdfb3">
+<pre class="example" id="orgdc8c054">
 A =
 
    1   2   4   5
@@ -1213,7 +1219,7 @@ Flip matrix upside down
 upside_down_D <span style="color: #d33682; font-style: italic;">=</span> flipud(D)
 </pre>
 </div>
-<pre class="example" id="org56f6721">
+<pre class="example" id="org5a6cac6">
 D =
 
    1   2   3
@@ -1234,7 +1240,7 @@ Pseudo-inverse
 pseudo_inverse <span style="color: #d33682; font-style: italic;">=</span> pinv(X)
 </pre>
 </div>
-<pre class="example" id="org38c33a1">
+<pre class="example" id="org1e1eb83">
 X =
 
    1   2   3
@@ -1249,8 +1255,8 @@ pseudo_inverse =
 </div>
 </div>
 
-<div id="outline-container-org4b6d117" class="outline-3">
-<h3 id="org4b6d117"><span class="section-number-3">3.8.</span> Plotting Data</h3>
+<div id="outline-container-orgdf87385" class="outline-3">
+<h3 id="orgdf87385"><span class="section-number-3">3.8.</span> Plotting Data</h3>
 <div class="outline-text-3" id="text-3-8">
 <div class="org-src-container">
 <pre class="src src-octave">X <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">10</span> <span style="color: #d33682; font-style: italic;">+</span> sqrt(<span style="color: #6c71c4; font-weight: bold;">10</span>)<span style="color: #d33682; font-style: italic;">*</span>randn(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">10000</span>)<span style="color: #d33682; font-style: italic;">;</span> <span style="color: #96A7A9; font-style: italic;">% random variable with mean=-10, and variance=10.</span>
@@ -1262,7 +1268,7 @@ print(<span style="color: #2aa198;">'normal_plot.png'</span><span style="color: 
 </pre>
 </div>
 
-<div id="orgebef38f" class="figure">
+<div id="org1a71990" class="figure">
 <p><img src="week2/normal_plot.png" alt="normal_plot.png" style="width: min(800px,100%);" />
 </p>
 </div>
@@ -1279,7 +1285,7 @@ print(<span style="color: #2aa198;">'plot_sin.png'</span><span style="color: #d3
 </pre>
 </div>
 
-<div id="org7761fa0" class="figure">
+<div id="org5e2ae25" class="figure">
 <p><img src="week2/plot_sin.png" alt="plot_sin.png" style="width: min(800px,100%);" />
 </p>
 </div>
@@ -1290,7 +1296,7 @@ y1<span style="color: #d33682; font-style: italic;">=</span>sin(<span style="col
 map <span style="color: #d33682; font-style: italic;">=</span> (y1<span style="color: #d33682; font-style: italic;">'</span> <span style="color: #d33682; font-style: italic;">*</span> y2) <span style="color: #d33682; font-style: italic;">*</span> (eye(size(t)) <span style="color: #d33682; font-style: italic;">*</span> y3<span style="color: #d33682; font-style: italic;">'</span>) <span style="color: #d33682; font-style: italic;">.*</span> (y1<span style="color: #d33682; font-style: italic;">+</span>y2)<span style="color: #d33682; font-style: italic;">;</span>
 hold on<span style="color: #d33682; font-style: italic;">;</span>
 imagesc(map)<span style="color: #d33682; font-style: italic;">;</span> colorbar<span style="color: #d33682; font-style: italic;">;</span> colormap(<span style="color: #2aa198;">'gray'</span>)<span style="color: #d33682; font-style: italic;">;</span>
-axis([<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">100</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">100</span>])
+axis([<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">100</span> <span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">100</span>])d
 xlabel(<span style="color: #2aa198;">'X axis'</span>)<span style="color: #d33682; font-style: italic;">;</span> ylabel(<span style="color: #2aa198;">'Y axis'</span>)<span style="color: #d33682; font-style: italic;">;</span> title(<span style="color: #2aa198;">'Heatmap'</span>)<span style="color: #d33682; font-style: italic;">;</span>
 <span style="color: #96A7A9; font-style: italic;">% </span><span style="color: #96A7A9; font-style: italic;">Configure and save image</span>
 set(gca<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'box'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'on'</span>)<span style="color: #d33682; font-style: italic;">;</span> set(gcf<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'paperposition'</span><span style="color: #d33682; font-style: italic;">,</span> [<span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">0</span> <span style="color: #6c71c4; font-weight: bold;">8</span> <span style="color: #6c71c4; font-weight: bold;">6</span>]<span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'visible'</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #2aa198;">'off'</span>)<span style="color: #d33682; font-style: italic;">;</span>
@@ -1298,37 +1304,237 @@ print(<span style="color: #2aa198;">'map_wave.png'</span><span style="color: #d3
 </pre>
 </div>
 
-<div id="org7f7ff30" class="figure">
+<div id="org639ee3a" class="figure">
 <p><img src="week2/map_wave.png" alt="map_wave.png" style="width: min(800px,100%);" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc39bfcb" class="outline-3">
-<h3 id="orgc39bfcb"><span class="section-number-3">3.9.</span> Control Statements</h3>
+<div id="outline-container-org5027b68" class="outline-3">
+<h3 id="org5027b68"><span class="section-number-3">3.9.</span> Control Statements</h3>
 <div class="outline-text-3" id="text-3-9">
 </div>
-<div id="outline-container-org07156c6" class="outline-4">
-<h4 id="org07156c6"><span class="section-number-4">3.9.1.</span> Loops and Conditionals</h4>
+<div id="outline-container-org4d2c3ac" class="outline-4">
+<h4 id="org4d2c3ac"><span class="section-number-4">3.9.1.</span> Loops and Conditionals</h4>
+<div class="outline-text-4" id="text-3-9-1">
+<p>
+For loops
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">v <span style="color: #d33682; font-style: italic;">=</span> zeros(<span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">10</span>)
+<span style="color: #859900; font-weight: bold;">for</span> i<span style="color: #d33682; font-style: italic;">=</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">:</span><span style="color: #6c71c4; font-weight: bold;">7</span><span style="color: #d33682; font-style: italic;">,</span>
+  v(i) <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">^</span>i<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">end</span><span style="color: #d33682; font-style: italic;">;</span>
+v
+idx <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #6c71c4; font-weight: bold;">1</span> <span style="color: #6c71c4; font-weight: bold;">8</span> <span style="color: #6c71c4; font-weight: bold;">9</span> <span style="color: #6c71c4; font-weight: bold;">10</span>]<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">for</span> i<span style="color: #d33682; font-style: italic;">=</span>idx<span style="color: #d33682; font-style: italic;">,</span>
+  v(i) <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">1000</span> <span style="color: #d33682; font-style: italic;">+</span> i<span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">end</span><span style="color: #d33682; font-style: italic;">;</span>
+v
+</pre>
 </div>
-<div id="outline-container-org4754113" class="outline-4">
-<h4 id="org4754113"><span class="section-number-4">3.9.2.</span> Functions</h4>
+<pre class="example">
+v =
+
+   0   0   0   0   0   0   0   0   0   0
+v =
+
+     2     4     8    16    32    64   128     0     0     0
+v =
+
+   1001      4      8     16     32     64    128   1008   1009   1010
+</pre>
+
+
+<p>
+While loop
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">i <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">while</span> i <span style="color: #d33682; font-style: italic;">&lt;=</span> <span style="color: #6c71c4; font-weight: bold;">3</span><span style="color: #d33682; font-style: italic;">,</span>
+  v(i) <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">999</span><span style="color: #d33682; font-style: italic;">;</span>
+  i <span style="color: #d33682; font-style: italic;">=</span> i<span style="color: #d33682; font-style: italic;">+</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">end</span><span style="color: #d33682; font-style: italic;">;</span>
+v
+i <span style="color: #d33682; font-style: italic;">=</span> <span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">while</span> true
+  <span style="color: #859900; font-weight: bold;">if</span> i <span style="color: #d33682; font-style: italic;">&gt;</span> <span style="color: #6c71c4; font-weight: bold;">4</span><span style="color: #d33682; font-style: italic;">,</span>
+    <span style="color: #859900; font-weight: bold;">break</span><span style="color: #d33682; font-style: italic;">;</span>
+  <span style="color: #859900; font-weight: bold;">end</span><span style="color: #d33682; font-style: italic;">;</span>
+  disp(i)<span style="color: #d33682; font-style: italic;">;</span>
+  i <span style="color: #d33682; font-style: italic;">=</span> i<span style="color: #d33682; font-style: italic;">+</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">;</span>
+<span style="color: #859900; font-weight: bold;">end</span><span style="color: #d33682; font-style: italic;">;</span>
+</pre>
+</div>
+<pre class="example">
+v =
+
+    999    999    999     16     32     64    128   1008   1009   1010
+1
+2
+3
+4
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgefc70dd" class="outline-3">
-<h3 id="orgefc70dd"><span class="section-number-3">3.10.</span> Vectorization</h3>
+<div id="outline-container-org8d05cba" class="outline-4">
+<h4 id="org8d05cba"><span class="section-number-4">3.9.2.</span> Functions</h4>
+<div class="outline-text-4" id="text-3-9-2">
+<p>
+Functions are stored in files. The name of the file must match the name of the function that the file exports. The file can have other internal functions, but they are not available outside of the file itself.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">ls</span> ./squareAndAdd.m
+<span style="color: #b58900; font-style: italic;">cat</span> ./squareAndAdd.m
+</pre>
+</div>
+<pre class="example">
+./squareAndAdd.m
+function ret_val = squareAndAdd(x, y)
+  ret_val = square(x) + y;
+
+function sq = square(x)
+  sq = x^2;
+</pre>
+
+
+<p>
+If we are in the same directory, as the <code>.m</code> file, then we can just call the function in these files. We can use the octave function <code>addpath('/path/to/file.m')</code> to make the definitions available even if we are not in the same directory
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">pwd
+squareAndAdd(<span style="color: #6c71c4; font-weight: bold;">2</span><span style="color: #d33682; font-style: italic;">,</span> <span style="color: #6c71c4; font-weight: bold;">1</span>)
+square(<span style="color: #6c71c4; font-weight: bold;">4</span>) <span style="color: #96A7A9; font-style: italic;">% this will fail</span>
+</pre>
+</div>
+<pre class="example">
+ans = /home/claudio/repos/machine-learning/week2
+ans = 5
+error: 'square' undefined near line 1, column 1
+
+The 'square' function belongs to the signal package from Octave Forge
+which seems to not be installed in your system.
+
+Please read &lt;https://www.octave.org/missing.html&gt; to learn how you can
+contribute missing functionality.
+</pre>
+
+
+<p>
+Let&rsquo;s create a function <code>costFunctionJ(X, y, Theta)</code> that receives the design matrix, targets, and a candidate for Theta, and returns the associated cost.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">ls</span> ./costFunctionJ.m
+<span style="color: #b58900; font-style: italic;">cat</span> ./costFunctionJ.m
+</pre>
+</div>
+<pre class="example" id="org1204a38">
+./costFunctionJ.m
+function J = costFunctionJ(X, y, Theta)
+  %% X     : is the "design matrix" (column of ones left-attached to matrix of features)
+  %% y     : is the array of targets
+  %% Theta : the array of parameters to evaluate
+
+  m = size(X,1);               % number of training examples.
+  h = X*Theta;                 % array of hypothesis. Each hyp. is T0 + T1*x1 + T2*x2 + T3*x3...
+  sqErrors = (h-y).^2;         % squared errors.
+  J = 1/(2*m) * sum(sqErrors); % half of the average of the addition of all sqErrors.
+</pre>
+
+<p>
+Let&rsquo;s use the function with some \(\Theta\)
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">data <span style="color: #d33682; font-style: italic;">=</span> load(<span style="color: #2aa198;">'my_dataset.txt'</span>)
+X <span style="color: #d33682; font-style: italic;">=</span> [  ones(size(data<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)<span style="color: #d33682; font-style: italic;">,</span><span style="color: #6c71c4; font-weight: bold;">1</span>)  <span style="color: #d33682; font-style: italic;">,</span>  data(<span style="color: #d33682; font-style: italic;">:,</span><span style="color: #6c71c4; font-weight: bold;">1</span><span style="color: #d33682; font-style: italic;">:</span>(end<span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">1</span>))  ]<span style="color: #d33682; font-style: italic;">;</span>
+y <span style="color: #d33682; font-style: italic;">=</span> data(<span style="color: #d33682; font-style: italic;">:,</span>end)<span style="color: #d33682; font-style: italic;">;</span>
+Theta <span style="color: #d33682; font-style: italic;">=</span> [<span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">7000</span> <span style="color: #6c71c4; font-weight: bold;">5</span> <span style="color: #d33682; font-style: italic;">-</span><span style="color: #6c71c4; font-weight: bold;">100</span> <span style="color: #6c71c4; font-weight: bold;">90</span> <span style="color: #6c71c4; font-weight: bold;">0</span>] <span style="color: #96A7A9; font-style: italic;">% taken out of my ass</span>
+cost <span style="color: #d33682; font-style: italic;">=</span> costFunctionJ(X<span style="color: #d33682; font-style: italic;">,</span> y<span style="color: #d33682; font-style: italic;">,</span> Theta<span style="color: #d33682; font-style: italic;">'</span>)
+</pre>
+</div>
+<pre class="example" id="org9cf204a">
+data =
+
+   2104      5      1     45    460
+   1416      3      2     40    232
+   1534      3      2     30    315
+    852      2      1     36    178
+Theta =
+
+  -7000      5   -100     90      0
+cost = 2.0401e+06
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org0124a40" class="outline-2">
-<h2 id="org0124a40"><span class="section-number-2">4.</span> Programming Assignment</h2>
+<div id="outline-container-orgf20c6e4" class="outline-3">
+<h3 id="orgf20c6e4"><span class="section-number-3">3.10.</span> Vectorization</h3>
+<div class="outline-text-3" id="text-3-10">
+<p>
+Yada yada&#x2026; Use the vector and matrix primitives that Octave offers rather than traversing with your own hand-made for-loops, etc. That is much faster.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org04dfe73" class="outline-2">
+<h2 id="org04dfe73"><span class="section-number-2">4.</span> Programming Assignment</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org5e6894f" class="outline-3">
-<h3 id="org5e6894f"><span class="section-number-3">4.1.</span> Submission System</h3>
+<div id="outline-container-org1713a78" class="outline-3">
+<h3 id="org1713a78"><span class="section-number-3">4.1.</span> Simple Octave function</h3>
 <div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> warmUpExercise.m.orig
+</pre>
+</div>
+<pre class="example" id="org824a0cf">
+function A = warmUpExercise()
+%WARMUPEXERCISE Example function in octave
+%   A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix
+A = [];
+% ============= YOUR CODE HERE ==============
+% Instructions: Return the 5x5 identity matrix
+%               In octave, we return values by defining which variables
+%               represent the return values (at the top of the file)
+%               and then set them accordingly.
+% ===========================================
+end
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #b58900; font-style: italic;">cat</span> warmUpExercise.m
+</pre>
+</div>
+<pre class="example">
+function A = warmUpExercise()
+  % WARMUPEXERCISE Example function in octave
+  % A = WARMUPEXERCISE() is an example function that returns the 5x5 identity matrix
+  A = eye(5);
+end
+</pre>
+
+
+<p>
+Run the warm-up exercise.
+</p>
+<div class="org-src-container">
+<pre class="src src-octave">warmUpExercise
+</pre>
+</div>
+<pre class="example">
+ans =
+
+Diagonal Matrix
+
+   1   0   0   0   0
+   0   1   0   0   0
+   0   0   1   0   0
+   0   0   0   1   0
+   0   0   0   0   1
+</pre>
 </div>
 </div>
 </div>
@@ -1345,7 +1551,7 @@ print(<span style="color: #2aa198;">'map_wave.png'</span><span style="color: #d3
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Claudio Parra</p>
-<p class="date">Created: 2023-07-20 Thu 04:45</p>
+<p class="date">Created: 2023-07-20 Thu 16:43</p>
 </div>
 </body>
 </html>
