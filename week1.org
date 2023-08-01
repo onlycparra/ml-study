@@ -19,20 +19,36 @@ Algorithms that achieves mappings \(x \rightarrow y\) by learning from many "cor
 *** Regression
 - Find a function.
 - Predict a number.
-- From infinitely many posibilities.
+- From infinitely many posibilities, such as the price of a house.
 #+attr_html: :style width: min(500px,100%);
 [[file:week1/regression.png]]
 *** Classification
 - Predicts categories.
-- From small set of possible categories.
-#+attr_html: :style width: min(500px,100%);
+- From small set of possible categories like "malignant" or "benign".
+#+attr_html: :style width: min(400px,100%);
 [[file:week1/classification.png]]
 
 ** Unsupervised Learning
+Algorithms that discover the structure or pattern of the given data.
+- Clustering algorithms: group similar points together.
+#+attr_html: :style width: min(300px,100%);
+  [[file:week1/clustering.png]]
+- Anomaly detection: find unusual data points.
+- Dimensionality reduction: Discover relevant features and "compress" the input dataset.
 
 ** Reinforcement Learning
-* Practice Quiz: Sup. vs Unsup. Learning
+Not yet discussed...
 * Regression Model
+** Linear Regression Model
+- This just fitting a straight line on the data. It is probably the most used algorithm to predict a numeric value.
+- In this case, the input contains "one feature".
+*** Glossary:
+- \(x\) :: Feature. Variable that describes some characteristics of the input.
+- \(y\) :: Target. Variable from which we have some examples, and want to ultimately predict for new sets of features.
+- \(m\) :: Number of training examples.
+- \((x,y)\) :: A single training example.
+- \((x^{(i)}, y^{(i)})\) :: The \(i^\text{th}\) training example in the dataset.
+- \(f\) or \(h\) ::
 * Practice Quiz: Regression Model
 * Gradient Descent
 * Practice Quiz: Gradient Descent
